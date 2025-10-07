@@ -1,0 +1,70 @@
+@import url('./foundation.css');
+
+#t {
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  z-index: 1000;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  min-width: 3rem;
+  min-height: 3rem;
+  font-size: 1.1rem;
+}
+
+@media (max-width: 600px) {
+  #t {
+    bottom: 1rem;
+    right: 1rem;
+  }
+}
+
+.h {
+  background: rgba(230, 57, 70, 0.1);
+  padding: 1.2rem;
+  border-radius: var(--r);
+  border-left: 4px solid var(--a);
+  margin: 1.5rem 0;
+}
+
+@media (prefers-color-scheme: light) {
+  .h {
+    background: rgba(230, 57, 70, 0.08);
+    border-color: #d63744;
+  }
+}
+
+.b {
+  background: var(--a);
+  border: 0;
+  color: #fff;
+  border-radius: var(--r);
+  padding: 0.6rem 1rem;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 500;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.b:hover,
+.b:focus {
+  background: var(--a2);
+  outline: 3px solid var(--a2);
+  outline-offset: 3px;
+}
+
+a {
+  color: var(--a2);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+a:focus {
+  outline: 3px solid var(--a2);
+  outline-offset: 2px;
+}
+
+.lang-en [lang="fr"],
+.lang-fr [lang="en"] {
+  display: none;
+}

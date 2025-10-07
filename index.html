@@ -6,216 +6,20 @@
     <title>Rent Strike / Grève des loyers – Tiohtià:ke</title>
     <meta
       name="description"
-      content="Tiohtià:ke Strike – a bilingual movement to transform rental housing into cooperatives through rent strikes and collective action."
+      content="Tiohtià:ke Strike – a movement to transform rental housing into cooperatives through rent strikes and collective action."
     />
     <meta name="color-scheme" content="light dark" />
-    <style>
-      :root {
-        --bg: #0f1923;
-        --fg: #e8eef3;
-        --a: #e63946;
-        --a2: #f4a261;
-        --m: #c5d0db;
-        --r: 10px;
-      }
-      @media (prefers-color-scheme: light) {
-        :root {
-          --bg: #fafafa;
-          --fg: #1a1a1a;
-          --m: #666;
-        }
-      }
-      * {
-        box-sizing: border-box;
-        margin: 0;
-        padding: 0;
-      }
-      body {
-        background: var(--bg);
-        color: var(--fg);
-        font: 18px/1.65 system-ui, -apple-system, sans-serif;
-        padding: 1rem;
-      }
-      .c {
-        max-width: 720px;
-        margin: 0 auto;
-        background: var(--bg);
-        border-radius: var(--r);
-        padding: 1.5rem 1.5rem 2rem;
-      }
-      .s {
-        position: absolute;
-        top: -40px;
-        left: 0;
-        background: var(--a);
-        color: #fff;
-        padding: 10px 12px;
-        text-decoration: none;
-        z-index: 100;
-        font-weight: 500;
-      }
-      .s:focus {
-        top: 0;
-      }
-      header {
-        margin-bottom: 2rem;
-      }
-      #t {
-        position: fixed;
-        bottom: 1.5rem;
-        right: 1.5rem;
-        z-index: 1000;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-        min-width: 3rem;
-        min-height: 3rem;
-        font-size: 1.1rem;
-      }
-      @media (max-width: 600px) {
-        #t {
-          bottom: 1rem;
-          right: 1rem;
-        }
-      }
-      h1,
-      h2 {
-        color: var(--a2);
-        margin-bottom: 0.7rem;
-        font-weight: 600;
-        line-height: 1.3;
-      }
-      h1 {
-        font-size: 2rem;
-      }
-      h2 {
-        margin-top: 2rem;
-        font-size: 1.5rem;
-      }
-      ul,
-      ol {
-        margin: 0.7rem 0 1.2rem 1.8rem;
-        line-height: 1.7;
-      }
-      li {
-        margin-bottom: 0.5rem;
-      }
-      p {
-        margin-bottom: 1.2rem;
-      }
-      blockquote {
-        border-left: 4px solid var(--a2);
-        padding-left: 1.2rem;
-        margin: 1.5rem 0;
-        font-style: italic;
-        color: var(--m);
-        line-height: 1.7;
-      }
-      .h {
-        background: rgba(230, 57, 70, 0.1);
-        padding: 1.2rem;
-        border-radius: var(--r);
-        border-left: 4px solid var(--a);
-        margin: 1.5rem 0;
-      }
-      @media (prefers-color-scheme: light) {
-        .h {
-          background: rgba(230, 57, 70, 0.08);
-          border-color: #d63744;
-        }
-      }
-      .b {
-        background: var(--a);
-        border: 0;
-        color: #fff;
-        border-radius: var(--r);
-        padding: 0.6rem 1rem;
-        cursor: pointer;
-        font-size: 1rem;
-        font-weight: 500;
-        text-decoration: none;
-        display: inline-block;
-      }
-      .b:hover,
-      .b:focus {
-        background: var(--a2);
-        outline: 3px solid var(--a2);
-        outline-offset: 3px;
-      }
-      a {
-        color: var(--a2);
-        text-decoration: underline;
-        text-underline-offset: 2px;
-      }
-      a:focus {
-        outline: 3px solid var(--a2);
-        outline-offset: 2px;
-      }
-      footer {
-        border-top: 1px solid rgba(128, 128, 128, 0.2);
-        margin-top: 3rem;
-        padding-top: 1.5rem;
-        font-size: 1rem;
-        color: var(--m);
-        text-align: center;
-      }
-      @media (max-width: 600px) {
-        body {
-          padding: 0.75rem;
-        }
-        .c {
-          padding: 1.2rem;
-        }
-        h1 {
-          font-size: 1.7rem;
-        }
-        h2 {
-          font-size: 1.3rem;
-        }
-      }
-      @media (prefers-reduced-motion: reduce) {
-        * {
-          animation: none !important;
-          transition: none !important;
-        }
-      }
-      .lang-en [lang="fr"],
-      .lang-fr [lang="en"] {
-        display: none;
-      }
-    </style>
-    <script>
-      (function () {
-        try {
-          var s = localStorage.getItem("lang"),
-            b = (navigator.language || "en").toLowerCase(),
-            l = s || (b.startsWith("fr") ? "fr" : "en");
-          document.documentElement.lang = l;
-          document.documentElement.className = "lang-" + l;
-        } catch (e) {
-          document.documentElement.className = "lang-en";
-        }
-      })();
-    </script>
+    <link rel="stylesheet" href="styles/main.css" />
+    <script src="scripts/lang-switcher.js" defer></script>
   </head>
   <body>
-    <a href="#m" class="s">Skip to main / Passer au contenu</a>
-
     <div class="c">
       <header>
         <h1>
-          <span lang="en">Tiohtià:ke Rent Strike</span>
-          <span lang="fr">Grève des loyers Tiohtià:ke</span>
+          <span data-i18n="title"></span>
         </h1>
         <p>
-          <span lang="en"
-            >An unlimited rent strike to transform rental housing into
-            tenant-run cooperatives. We organize housing for all and support
-            Land Back.</span
-          >
-          <span lang="fr"
-            >Une grève de loyer illimitée pour transformer les logements en
-            coopératives gérées par les locataires. Nous organisons le logement
-            pour tous et soutenons « Land Back ».</span
-          >
+          <span data-i18n="subtitle"></span>
         </p>
       </header>
 
@@ -226,330 +30,126 @@
       <main id="m">
         <section aria-labelledby="h1">
           <h2 id="h1">
-            <span lang="en">Our Strategy</span>
-            <span lang="fr">Notre Stratégie</span>
+            <span data-i18n="ourStrategy"></span>
           </h2>
 
           <div class="h">
             <p>
-              <span lang="en"
-                ><strong>Part I:</strong> Once a dozen buildings or 100 tenants
-                in a neighborhood sign the pledge, they go on strike. We aim to
-                achieve this in at least two neighborhoods by 2026.</span
-              >
-              <span lang="fr"
-                ><strong>Étape 1 :</strong> Une fois qu'une douzaine d'immeubles
-                ou 100 locataires dans un quartier signent l'engagement, ils
-                déclenchent une grève. Nous espérons atteindre cet objectif dans
-                au moins deux quartiers en 2026.</span
-              >
+              <strong>Part I:</strong> <span data-i18n="part1Rest"></span>
             </p>
             <p>
-              <span lang="en"
-                ><strong>Part II:</strong> Once most renters in a neighborhood
-                either go on strike or sign the petition supporting it, that
-                neighborhood comes to a collective agreement to transform rental
-                units into cooperatives.</span
-              >
-              <span lang="fr"
-                ><strong>Étape 2 :</strong> Une fois que la plupart des
-                locataires dans un quartier font grève ou signent la pétition
-                l'appuyant, ce quartier parvient à un accord collectif pour
-                transformer les logements en coopératives.</span
-              >
+              <strong>Part II:</strong> <span data-i18n="part2Rest"></span>
             </p>
           </div>
         </section>
 
         <section aria-labelledby="h2">
           <h2 id="h2">
-            <span lang="en">Why Rent Strike?</span>
-            <span lang="fr">Pourquoi la Grève de Loyer?</span>
+            <span data-i18n="whyRentStrike"></span>
           </h2>
 
           <p>
-            <span lang="en"
-              >Housing is a human right, but rent suffocates us. From Harlem to
-              Soweto to Barcelona, rent strikes have proven effective at lifting
-              burdens from ordinary people.</span
-            >
-            <span lang="fr"
-              >Le logement est un droit humain, mais le loyer nous étouffe. De
-              Harlem à Soweto à Barcelone, les grèves de loyer ont prouvé leur
-              efficacité à alléger le fardeau des gens ordinaires.</span
-            >
+            <span data-i18n="rentStrikePara1"></span>
           </p>
 
           <p>
-            <span lang="en"
-              >The anti-apartheid strikers of 1980s Soweto kept their homes or
-              avoided paying rent for over a decade. Countless 20th-century rent
-              strikes won reduced rents and better living conditions.</span
-            >
-            <span lang="fr"
-              >Les grévistes anti-apartheid des années 1980 à Soweto ont pu
-              garder leurs maisons ou éviter de payer le loyer pendant plus
-              d'une décennie. D'innombrables grèves du 20e siècle ont gagné des
-              loyers réduits et de meilleures conditions de vie.</span
-            >
+            <span data-i18n="rentStrikePara2"></span>
           </p>
 
           <blockquote>
-            <span lang="en"
-              >"We'll get every black man in this city... Nobody will pay any
-              rent. The whole city will come to a halt." — Malcolm X, inspired
-              by the 1963 Harlem rent strike</span
-            >
-            <span lang="fr"
-              >« Personne ne paiera le loyer. Toute la ville s'arrêtera. » —
-              Malcolm X, inspiré par la grève de loyer d'Harlem en 1963</span
-            >
+            <span data-i18n="rentStrikeQuote"></span>
           </blockquote>
 
           <p>
-            <span lang="en"
-              >The easiest way to improve our lives: Just stop paying
-              rent.</span
-            >
-            <span lang="fr"
-              >La façon la plus facile d'améliorer nos vies : Juste arrêtons de
-              payer le loyer.</span
-            >
+            <span data-i18n="rentStrikePara3"></span>
           </p>
         </section>
 
         <section aria-labelledby="h3">
           <h2 id="h3">
-            <span lang="en">Why Co-ops?</span>
-            <span lang="fr">Pourquoi les Coopératives?</span>
+            <span data-i18n="whyCoops"></span>
           </h2>
 
           <p>
-            <span lang="en"
-              >Co-ops eliminate the landlord middleman. Rather than a landlord
-              collecting passive income while paying others to do the real work,
-              co-op tenants pay workers directly or do the work themselves. This
-              means highly affordable rents and well-maintained buildings.</span
-            >
-            <span lang="fr"
-              >Les coopératives éliminent le propriétaire intermédiaire. Plutôt
-              qu'avoir un proprio qui récolte un revenu passif tout en payant
-              d'autres pour faire le vrai travail, les locataires de co-op
-              paient les employés directement ou font le travail eux-mêmes. Cela
-              signifie des loyers très abordables et des bâtiments bien
-              entretenus.</span
-            >
+            <span data-i18n="coopsPara1"></span>
           </p>
 
           <p>
-            <span lang="en"
-              >Co-ops empower workers. By controlling our housing, we need to
-              work less just to survive. Co-ops can build greenhouses and
-              install solar panels. They can reserve space for shops whose
-              profits provide free housing for those in need. By managing
-              housing democratically, we could become fully autonomous,
-              negotiate better wages, transform our workplaces into co-ops, and
-              even standardize 2-3 day work weeks while enjoying better quality
-              of life.</span
-            >
-            <span lang="fr"
-              >Les coopératives donnent le pouvoir aux travailleurs. En prenant
-              contrôle de notre logement, on aura moins besoin de travailler
-              juste pour survivre. Les co-ops peuvent construire des serres et
-              installer des panneaux solaires. Elles peuvent réserver de
-              l'espace pour des magasins dont les profits offrent du logement
-              gratuit à ceux qui en ont besoin. En gérant notre logement
-              démocratiquement, on pourrait devenir complètement autonomes,
-              négocier de meilleurs salaires, transformer nos lieux de travail
-              en co-ops et même standardiser des semaines de 2 ou 3 jours tout
-              en jouissant d'une meilleure qualité de vie.</span
-            >
+            <span data-i18n="coopsPara2"></span>
           </p>
 
           <blockquote>
-            <span lang="en"
-              >"The coop system of economy shall prevail. Instead of the people
-              competing with each other, they shall help and co-operate with
-              each other." — Louis Karoniaktajeh Hall, Mohawk artist and
-              activist, Ganienkeh Manifesto (1974)</span
-            >
-            <span lang="fr"
-              >« Le système coopératif d'économie prévaudra. Au lieu que les
-              gens se fassent compétition, ils s'entraideront et coopéreront. »
-              — Louis Karoniaktajeh Hall, artiste et activiste mohawk, Manifeste
-              Ganienkeh (1974)</span
-            >
+            <span data-i18n="coopsQuote"></span>
           </blockquote>
 
           <p>
-            <span lang="en"
-              >How do we transform our apartments into co-ops? We just agree to
-              do it.</span
-            >
-            <span lang="fr"
-              >Comment transformer nos appartements en coops? Juste mettons-nous
-              d'accord.</span
-            >
+            <span data-i18n="coopsPara3"></span>
           </p>
         </section>
 
         <section aria-labelledby="h4">
           <h2 id="h4">
-            <span lang="en">Who We Are</span>
-            <span lang="fr">Qui Sommes-Nous</span>
+            <span data-i18n="whoWeAre"></span>
           </h2>
 
           <p>
-            <span lang="en"
-              >The Tiohtià:ke Strike is a grassroots movement organizing strikes
-              not to pressure authorities, but to free people's time and
-              resources, thus empowering them. Our demands are addressed to
-              people themselves.</span
-            >
-            <span lang="fr"
-              >La Grève de Tiohtià:ke est un mouvement populaire qui organise
-              des grèves non pour mettre la pression sur les autorités, mais
-              pour libérer le temps et les ressources des gens et leur donner le
-              pouvoir. Nos demandes sont adressées aux gens eux-mêmes.</span
-            >
+            <span data-i18n="whoWeArePara1"></span>
           </p>
 
           <p>
             <strong>
-              <span lang="en">Horizontal Mass Organization</span>
-              <span lang="fr">Organisation de masse horizontale</span>
+              <span data-i18n="horizontalMassOrg"></span>
             </strong>
           </p>
 
           <p>
-            <span lang="en"
-              >We trust people. We give everyone the power to organize and take
-              initiative. Rather than a central team giving orders to
-              volunteers, we rotate management tasks to demystify these skills.
-              Real leaders inspire others to lead.</span
-            >
-            <span lang="fr"
-              >On fait confiance aux gens. Nous donnons à tous le pouvoir
-              d'organiser et de faire preuve d'initiative. Plutôt qu'avoir une
-              équipe centrale qui donne des ordres, nous mettons en rotation les
-              tâches de gestion pour démystifier ces habiletés. Les vrais
-              directeurs inspirent les autres à la direction.</span
-            >
+            <span data-i18n="whoWeArePara2"></span>
           </p>
 
           <p>
             <strong>
-              <span lang="en">Direct Prefigurative Action</span>
-              <span lang="fr">Action directe préfigurative</span>
+              <span data-i18n="directPrefigurativeAction"></span>
             </strong>
           </p>
 
           <p>
-            <span lang="en"
-              >A strike isn't the peak of class struggle—it's liberation itself.
-              We believe it's our duty and more strategic to live as if we were
-              already free. Rather than using our newfound time and energy to
-              negotiate with authorities, we use them to build mutual aid
-              networks and co-ops for a more autonomous life. The strike is a
-              choreographed act of rest and healing.</span
-            >
-            <span lang="fr"
-              >La grève n'est pas l'apothéose de la lutte—c'est la libération
-              elle-même. Nous croyons que c'est notre devoir et plus stratégique
-              de vivre comme si nous étions déjà libres. Plutôt qu'utiliser
-              notre temps et énergie retrouvés pour négocier avec les autorités,
-              nous les utilisons pour construire des réseaux d'entraide et des
-              co-ops. La grève est un acte choréographié de repos et de
-              guérison.</span
-            >
+            <span data-i18n="whoWeArePara3"></span>
           </p>
 
           <p>
             <strong>
-              <span lang="en">Consensus with Difference</span>
-              <span lang="fr">Consensus vis-à-vis la différence</span>
+              <span data-i18n="consensusWithDifference"></span>
             </strong>
           </p>
 
           <p>
-            <span lang="en"
-              >While we seek consensus, we don't impose it. A better world is
-              one where differences have their place and can coexist without
-              being stifled in the name of artificial unity. We encourage "open
-              disagreements openly arrived at."</span
-            >
-            <span lang="fr"
-              >Bien que nous cherchons le consensus, nous ne l'imposons pas. Un
-              monde meilleur est celui où les différences ont leur place et
-              peuvent coexister sans se faire étouffer au nom d'une unité
-              artificielle. Nous encourageons « des désaccords ouverts conclus
-              ouvertement ».</span
-            >
+            <span data-i18n="whoWeArePara4"></span>
           </p>
         </section>
 
         <section aria-labelledby="h5">
           <h2 id="h5">
-            <span lang="en">Join the Strike</span>
-            <span lang="fr">Rejoignez la Grève</span>
+            <span data-i18n="joinTheStrike"></span>
           </h2>
 
           <p>
-            <span lang="en"
-              >Sign the petition, organize in your neighborhood, and help us
-              reach our 2026 goal.</span
-            >
-            <span lang="fr"
-              >Signez la pétition, organisez-vous dans votre quartier et
-              aidez-nous à atteindre notre objectif de 2026.</span
-            >
+            <span data-i18n="joinTheStrikePara1"></span>
           </p>
 
           <p>
             <a href="mailto:tiohtiakestrike@proton.me" class="b">
-              <span lang="en">Email: tiohtiakestrike@proton.me</span>
-              <span lang="fr">Courriel : tiohtiakestrike@proton.me</span>
+              <span data-i18n="email"></span>
             </a>
           </p>
 
           <p>
-            <span lang="en"
-              >Instagram:
-              <a href="https://instagram.com/tiohtiake.strike"
-                ><strong>@tiohtiake.strike</strong></a
-              ></span
-            >
-            <span lang="fr"
-              >Instagram :
-              <a href="https://instagram.com/tiohtiake.strike"
-                ><strong>@tiohtiake.strike</strong></a
-              ></span
-            >
+            <span data-i18n="instagramLabel"></span>
+            <a href="https://instagram.com/tiohtiake.strike"><strong>@tiohtiake.strike</strong></a>
           </p>
         </section>
       </main>
 
       <footer role="contentinfo"></footer>
     </div>
-
-    <script>
-      var t = document.getElementById("t"),
-        h = document.documentElement;
-      function u() {
-        t.textContent = h.lang === "en" ? "FR" : "EN";
-      }
-      function s() {
-        var c = h.lang,
-          n = c === "en" ? "fr" : "en";
-        h.lang = n;
-        h.className = "lang-" + n;
-        try {
-          localStorage.setItem("lang", n);
-        } catch (e) {}
-        u();
-      }
-      u();
-      t.onclick = s;
-    </script>
   </body>
 </html>

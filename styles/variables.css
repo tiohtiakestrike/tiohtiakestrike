@@ -1,0 +1,16 @@
+:root {
+  --bg: #0f1923;
+  --fg: #e8eef3;
+  --a: #e63946;
+  --a2: #f4a261;
+  --m: #c5d0db;
+  --r: 10px;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --bg: #fafafa;
+    --fg: #1a1a1a;
+    --m: #666;
+  }
+}
