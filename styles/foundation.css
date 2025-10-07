@@ -1,0 +1,91 @@
+@import url('./variables.css');
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font: 18px/1.65 system-ui, -apple-system, sans-serif;
+  padding: 1rem;
+}
+
+.c {
+  max-width: 720px;
+  margin: 0 auto;
+  background: var(--bg);
+  border-radius: var(--r);
+  padding: 1.5rem 1.5rem 2rem;
+}
+
+.s {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background: var(--a);
+  color: #fff;
+  padding: 10px 12px;
+  text-decoration: none;
+  z-index: 100;
+  font-weight: 500;
+}
+
+.s:focus {
+  top: 0;
+}
+
+header {
+  margin-bottom: 2rem;
+}
+
+h1,
+h2 {
+  color: var(--a2);
+  margin-bottom: 0.7rem;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+h1 {
+  font-size: 2rem;
+}
+
+h2 {
+  margin-top: 2rem;
+  font-size: 1.5rem;
+}
+
+ul,
+ol {
+  margin: 0.7rem 0 1.2rem 1.8rem;
+  line-height: 1.7;
+}
+
+li {
+  margin-bottom: 0.5rem;
+}
+
+p {
+  margin-bottom: 1.2rem;
+}
+
+blockquote {
+  border-left: 4px solid var(--a2);
+  padding-left: 1.2rem;
+  margin: 1.5rem 0;
+  font-style: italic;
+  color: var(--m);
+  line-height: 1.7;
+}
+
+footer {
+  border-top: 1px solid rgba(128, 128, 128, 0.2);
+  margin-top: 3rem;
+  padding-top: 1.5rem;
+  font-size: 1rem;
+  color: var(--m);
+  text-align: center;
+}
