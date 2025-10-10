@@ -14,7 +14,9 @@
   </head>
   <body>
     <div class="c">
-      <header>
+      <a href="#main-content" class="skip-link">Skip to main content</a>
+      
+      <header role="banner">
         <h1>
           <span data-i18n="title"></span>
         </h1>
@@ -23,26 +25,74 @@
         </p>
       </header>
 
-      <button id="t" class="b" aria-label="Switch language / Changer de langue">
-        FR
-      </button>
+      <nav role="navigation" aria-label="Language selection">
+        <button id="t" class="b" aria-label="Switch language / Changer de langue" aria-haspopup="true">
+          FR
+        </button>
+      </nav>
 
-      <main id="m">
-        <section aria-labelledby="h1">
-          <h2 id="h1">
-            <span data-i18n="ourStrategy"></span>
-          </h2>
+      <main id="main-content" role="main">
+        <section class="intro">
+          <p class="lead">
+            <span data-i18n="description"></span>
+          </p>
 
-          <div class="h">
-            <p>
-              <strong>Part I:</strong> <span data-i18n="part1Rest"></span>
-            </p>
-            <p>
-              <strong>Part II:</strong> <span data-i18n="part2Rest"></span>
-            </p>
+          <div class="vision-section" aria-labelledby="vision-heading">
+            <h2 id="vision-heading">
+              <span data-i18n="visionTitle"></span>
+            </h2>
+            <ul class="goal-list" role="list">
+              <li role="listitem"><span data-i18n="visionPoints.0"></span></li>
+              <li role="listitem"><span data-i18n="visionPoints.1"></span></li>
+              <li role="listitem"><span data-i18n="visionPoints.2"></span></li>
+              <li role="listitem"><span data-i18n="visionPoints.3"></span></li>
+            </ul>
           </div>
-        </section>
 
+          <div class="power-section" aria-labelledby="power-heading">
+            <h2 id="power-heading">
+              <span data-i18n="powerTitle"></span>
+            </h2>
+            <ul class="goal-list" role="list">
+              <li role="listitem"><span data-i18n="powerPoints.0"></span></li>
+              <li role="listitem"><span data-i18n="powerPoints.1"></span></li>
+              <li role="listitem"><span data-i18n="powerPoints.2"></span></li>
+              <li role="listitem"><span data-i18n="powerPoints.3"></span></li>
+            </ul>
+          </div>
+
+          <div class="plan-section" aria-labelledby="plan-heading">
+            <h2 id="plan-heading">
+              <span data-i18n="planTitle"></span>
+            </h2>
+            
+            <h3 class="phase-title">
+              <span data-i18n="planPhase1"></span>
+            </h3>
+            <ul class="goal-list" role="list">
+              <li role="listitem"><span data-i18n="planPhase1Points.0"></span></li>
+              <li role="listitem"><span data-i18n="planPhase1Points.1"></span></li>
+              <li role="listitem"><span data-i18n="planPhase1Points.2"></span></li>
+              <li role="listitem"><span data-i18n="planPhase1Points.3"></span></li>
+            </ul>
+
+            <h3 class="phase-title">
+              <span data-i18n="planPhase2"></span>
+            </h3>
+            <ul class="goal-list" role="list">
+              <li role="listitem"><span data-i18n="planPhase2Points.0"></span></li>
+              <li role="listitem"><span data-i18n="planPhase2Points.1"></span></li>
+              <li role="listitem"><span data-i18n="planPhase2Points.2"></span></li>
+              <li role="listitem"><span data-i18n="planPhase2Points.3"></span></li>
+            </ul>
+          </div>
+
+          <p class="cta">
+            <a href="https://cryptpad.fr/form/#/2/form/view/X8D3gsHhnBnWw0pgldRGxipkdX0l7YOxJqQfTihOhnE/" class="b" target="_blank" rel="noopener">
+              <span data-i18n="signPetition"></span>
+            </a>
+          </p>
+        </section>
         <section aria-labelledby="h2">
           <h2 id="h2">
             <span data-i18n="whyRentStrike"></span>
@@ -137,14 +187,19 @@
           </p>
 
           <p>
-            <a href="mailto:tiohtiakestrike@proton.me" class="b">
-              <span data-i18n="email"></span>
+            <a href="https://cryptpad.fr/form/#/2/form/view/X8D3gsHhnBnWw0pgldRGxipkdX0l7YOxJqQfTihOhnE/" class="b" target="_blank" rel="noopener">
+              <span data-i18n="signPetition"></span>
             </a>
           </p>
 
-          <p>
+          <p class="contact-info">
+            <span data-i18n="email"></span>
+            <a href="mailto:tiohtiakestrike@proton.me">tiohtiakestrike@proton.me</a>
+          </p>
+
+          <p class="contact-info">
             <span data-i18n="instagramLabel"></span>
-            <a href="https://instagram.com/tiohtiake.strike"><strong>@tiohtiake.strike</strong></a>
+            <a href="https://instagram.com/tiohtiake.strike">@tiohtiake.strike</a>
           </p>
         </section>
       </main>
