@@ -1,210 +1,444 @@
 <!DOCTYPE html>
-<html lang="en" class="lang-en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>Rent Strike / Grève des loyers – Tiohtià:ke</title>
-    <meta
-      name="description"
-      content="Tiohtià:ke Strike – a movement to transform rental housing into cooperatives through rent strikes and collective action."
-    />
-    <meta name="color-scheme" content="light dark" />
-    <link rel="stylesheet" href="styles/main.css" />
-    <script src="scripts/lang-switcher.js" defer></script>
-  </head>
-  <body>
-    <div class="c">
-      <a href="#main-content" class="skip-link">Skip to main content</a>
-      
-      <header role="banner">
-        <h1>
-          <span data-i18n="title"></span>
-        </h1>
-        <p>
-          <span data-i18n="subtitle"></span>
-        </p>
-      </header>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tiohtià:ke Strike</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-      <nav role="navigation" aria-label="Language selection">
-        <button id="t" class="b" aria-label="Switch language / Changer de langue" aria-haspopup="true">
-          FR
-        </button>
-      </nav>
+        body {
+            font-family: 'Georgia', serif;
+            overflow-x: hidden;
+            background: #000;
+        }
 
-      <main id="main-content" role="main">
-        <section class="intro">
-          <p class="lead">
-            <span data-i18n="description"></span>
-          </p>
+        /* HERO SECTION */
+        .hero {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            overflow: hidden;
+        }
 
-          <div class="vision-section" aria-labelledby="vision-heading">
-            <h2 id="vision-heading">
-              <span data-i18n="visionTitle"></span>
-            </h2>
-            <ul class="goal-list" role="list">
-              <li role="listitem"><span data-i18n="visionPoints.0"></span></li>
-              <li role="listitem"><span data-i18n="visionPoints.1"></span></li>
-              <li role="listitem"><span data-i18n="visionPoints.2"></span></li>
-              <li role="listitem"><span data-i18n="visionPoints.3"></span></li>
-            </ul>
-          </div>
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Paul_Signac_-_In_the_Time_of_Harmony.jpg/2560px-Paul_Signac_-_In_the_Time_of_Harmony.jpg');
+            background-size: cover;
+            background-position: center;
+            transition: background-position 0.1s ease-out;
+            filter: brightness(0.7);
+        }
 
-          <div class="power-section" aria-labelledby="power-heading">
-            <h2 id="power-heading">
-              <span data-i18n="powerTitle"></span>
-            </h2>
-            <ul class="goal-list" role="list">
-              <li role="listitem"><span data-i18n="powerPoints.0"></span></li>
-              <li role="listitem"><span data-i18n="powerPoints.1"></span></li>
-              <li role="listitem"><span data-i18n="powerPoints.2"></span></li>
-              <li role="listitem"><span data-i18n="powerPoints.3"></span></li>
-            </ul>
-          </div>
+        @media (max-width: 768px) {
+            .hero-bg {
+                background-size: auto 100%;
+                background-position: left center;
+            }
+        }
 
-          <div class="plan-section" aria-labelledby="plan-heading">
-            <h2 id="plan-heading">
-              <span data-i18n="planTitle"></span>
-            </h2>
-            
-            <h3 class="phase-title">
-              <span data-i18n="planPhase1"></span>
-            </h3>
-            <ul class="goal-list" role="list">
-              <li role="listitem"><span data-i18n="planPhase1Points.0"></span></li>
-              <li role="listitem"><span data-i18n="planPhase1Points.1"></span></li>
-              <li role="listitem"><span data-i18n="planPhase1Points.2"></span></li>
-              <li role="listitem"><span data-i18n="planPhase1Points.3"></span></li>
-            </ul>
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.6));
+        }
 
-            <h3 class="phase-title">
-              <span data-i18n="planPhase2"></span>
-            </h3>
-            <ul class="goal-list" role="list">
-              <li role="listitem"><span data-i18n="planPhase2Points.0"></span></li>
-              <li role="listitem"><span data-i18n="planPhase2Points.1"></span></li>
-              <li role="listitem"><span data-i18n="planPhase2Points.2"></span></li>
-              <li role="listitem"><span data-i18n="planPhase2Points.3"></span></li>
-            </ul>
-          </div>
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 2rem;
+            color: white;
+        }
 
-          <p class="cta">
-            <a href="https://cryptpad.fr/form/#/2/form/view/X8D3gsHhnBnWw0pgldRGxipkdX0l7YOxJqQfTihOhnE/" class="b" target="_blank" rel="noopener">
-              <span data-i18n="signPetition"></span>
-            </a>
-          </p>
-        </section>
-        <section aria-labelledby="h2">
-          <h2 id="h2">
-            <span data-i18n="whyRentStrike"></span>
-          </h2>
+        h1 {
+            font-size: clamp(2.5rem, 8vw, 5rem);
+            font-weight: 300;
+            margin-bottom: 1.5rem;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.8);
+            letter-spacing: 2px;
+        }
 
-          <p>
-            <span data-i18n="rentStrikePara1"></span>
-          </p>
+        .subtitle {
+            font-size: clamp(1rem, 3vw, 1.5rem);
+            max-width: 700px;
+            margin-bottom: 3rem;
+            line-height: 1.6;
+            text-shadow: 1px 1px 4px rgba(0,0,0,0.8);
+            font-weight: 300;
+        }
 
-          <p>
-            <span data-i18n="rentStrikePara2"></span>
-          </p>
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
 
-          <blockquote>
-            <span data-i18n="rentStrikeQuote"></span>
-          </blockquote>
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.2rem;
+            padding: 1rem 2.5rem;
+            border: 2px solid white;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            background: rgba(0,0,0,0.3);
+            backdrop-filter: blur(5px);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 400;
+        }
 
-          <p>
-            <span data-i18n="rentStrikePara3"></span>
-          </p>
-        </section>
+        .nav-links a:hover {
+            background: white;
+            color: #000;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(255,255,255,0.3);
+        }
 
-        <section aria-labelledby="h3">
-          <h2 id="h3">
-            <span data-i18n="whyCoops"></span>
-          </h2>
+        @media (max-width: 768px) {
+            .nav-links {
+                flex-direction: column;
+                gap: 1rem;
+                width: 100%;
+                max-width: 300px;
+            }
 
-          <p>
-            <span data-i18n="coopsPara1"></span>
-          </p>
+            .nav-links a {
+                width: 100%;
+            }
+        }
 
-          <p>
-            <span data-i18n="coopsPara2"></span>
-          </p>
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(10px);
+            }
+            60% {
+                transform: translateY(5px);
+            }
+        }
 
-          <blockquote>
-            <span data-i18n="coopsQuote"></span>
-          </blockquote>
+        /* ABOUT PAGE */
+        .page {
+            display: none;
+            min-height: 100vh;
+            background: #f5f1e8;
+            color: #2c2c2c;
+        }
 
-          <p>
-            <span data-i18n="coopsPara3"></span>
-          </p>
-        </section>
+        .page.active {
+            display: block;
+        }
 
-        <section aria-labelledby="h4">
-          <h2 id="h4">
-            <span data-i18n="whoWeAre"></span>
-          </h2>
+        .page-header {
+            background: #2c2c2c;
+            color: white;
+            padding: 1.5rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+        }
 
-          <p>
-            <span data-i18n="whoWeArePara1"></span>
-          </p>
+        .page-nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
 
-          <p>
-            <strong>
-              <span data-i18n="horizontalMassOrg"></span>
-            </strong>
-          </p>
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 300;
+            letter-spacing: 1px;
+            cursor: pointer;
+        }
 
-          <p>
-            <span data-i18n="whoWeArePara2"></span>
-          </p>
+        .page-nav-links {
+            display: flex;
+            gap: 2rem;
+        }
 
-          <p>
-            <strong>
-              <span data-i18n="directPrefigurativeAction"></span>
-            </strong>
-          </p>
+        .page-nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: opacity 0.3s;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
 
-          <p>
-            <span data-i18n="whoWeArePara3"></span>
-          </p>
+        .page-nav-links a:hover {
+            opacity: 0.7;
+        }
 
-          <p>
-            <strong>
-              <span data-i18n="consensusWithDifference"></span>
-            </strong>
-          </p>
+        @media (max-width: 768px) {
+            .page-nav-links {
+                gap: 1rem;
+                font-size: 0.9rem;
+            }
+        }
 
-          <p>
-            <span data-i18n="whoWeArePara4"></span>
-          </p>
-        </section>
+        .content-section {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
 
-        <section aria-labelledby="h5">
-          <h2 id="h5">
-            <span data-i18n="joinTheStrike"></span>
-          </h2>
+        .content-section h2 {
+            font-size: clamp(2rem, 5vw, 3rem);
+            font-weight: 300;
+            margin-bottom: 2rem;
+            color: #1a1a1a;
+            letter-spacing: 1px;
+        }
 
-          <p>
-            <span data-i18n="joinTheStrikePara1"></span>
-          </p>
+        .content-section p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            color: #3c3c3c;
+        }
 
-          <p>
-            <a href="https://cryptpad.fr/form/#/2/form/view/X8D3gsHhnBnWw0pgldRGxipkdX0l7YOxJqQfTihOhnE/" class="b" target="_blank" rel="noopener">
-              <span data-i18n="signPetition"></span>
-            </a>
-          </p>
+        .content-section ul {
+            margin: 1.5rem 0;
+            padding-left: 2rem;
+        }
 
-          <p class="contact-info">
-            <span data-i18n="email"></span>
-            <a href="mailto:tiohtiakestrike@proton.me">tiohtiakestrike@proton.me</a>
-          </p>
+        .content-section li {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 1rem;
+            color: #3c3c3c;
+        }
 
-          <p class="contact-info">
-            <span data-i18n="instagramLabel"></span>
-            <a href="https://instagram.com/tiohtiake.strike">@tiohtiake.strike</a>
-          </p>
-        </section>
-      </main>
+        .divider {
+            width: 100px;
+            height: 2px;
+            background: #8b7355;
+            margin: 4rem auto;
+        }
 
-      <footer role="contentinfo"></footer>
+        /* RESOURCES PAGE */
+        .resource-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .resource-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .resource-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+        }
+
+        .resource-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #1a1a1a;
+        }
+
+        .resource-card p {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: #5c5c5c;
+        }
+
+        .resource-card a {
+            display: inline-block;
+            margin-top: 1rem;
+            color: #8b7355;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .resource-card a:hover {
+            color: #5c4a3a;
+        }
+    </style>
+</head>
+<body>
+    <!-- LANDING PAGE -->
+    <div id="landing" class="page active">
+        <div class="hero">
+            <div class="hero-bg" id="heroBg"></div>
+            <div class="hero-bg" style="background-image: url('/assets/In\ the\ time\ of\ Harmony.png');"></div>
+            <div class="overlay"></div>
+            <div class="hero-content">
+                <h1>Tiohtià:ke Strike</h1>
+                <p class="subtitle">
+                    Building collective power for housing justice. Join us in the fight for affordable, dignified housing and community-controlled co-operatives.
+                </p>
+                <div class="nav-links">
+                    <a href="#" onclick="showPage('about'); return false;">About</a>
+                    <a href="https://cryptpad.fr/form/#/2/form/view/X8D3gsHhnBnWw0pgldRGxipkdX0l7YOxJqQfTihOhnE/" target="_blank">Petition</a>
+                    <a href="#" onclick="showPage('resources'); return false;">Resources</a>
+                </div>
+            </div>
+        </div>
     </div>
-  </body>
+
+    <!-- ABOUT PAGE -->
+    <div id="about" class="page">
+        <div class="page-header">
+            <div class="page-nav">
+                <div class="logo" onclick="showPage('landing')">Tiohtià:ke Strike</div>
+                <div class="page-nav-links">
+                    <a href="#" onclick="showPage('about'); return false;">About</a>
+                    <a href="https://cryptpad.fr/form/#/2/form/view/X8D3gsHhnBnWw0pgldRGxipkdX0l7YOxJqQfTihOhnE/" target="_blank">Petition</a>
+                    <a href="#" onclick="showPage('resources'); return false;">Resources</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="content-section">
+            <h2>Who Are We?</h2>
+            <p>
+                We are tenants, organizers, and community members in Tiohtià:ke (Montreal) who believe that housing is a human right, not a commodity. We come together from diverse backgrounds, united by our shared experience of rising rents, deteriorating housing conditions, and the erosion of our right to dignified shelter.
+            </p>
+            <p>
+                Our movement is rooted in mutual aid, collective action, and the belief that real change comes from organized tenants standing together. We are building power from the ground up, block by block, building by building.
+            </p>
+
+            <div class="divider"></div>
+
+            <h2>Why Rent Strike?</h2>
+            <p>
+                A rent strike is a powerful tool for tenants to collectively withhold rent to demand better conditions, fair prices, and systemic change. When individual complaints fall on deaf ears, collective action creates undeniable pressure.
+            </p>
+            <p>
+                In Tiohtià:ke, we face:
+            </p>
+            <ul>
+                <li>Skyrocketing rents that far outpace wage increases</li>
+                <li>Aggressive evictions through renovictions and demolitions</li>
+                <li>Landlords who ignore maintenance and tenant rights</li>
+                <li>A housing tribunal system that favors property owners</li>
+                <li>The financialization of housing by corporate landlords and REITs</li>
+            </ul>
+            <p>
+                By organizing a rent strike, we refuse to accept these conditions. We demand accountability, transparency, and a housing system that serves people, not profit. A rent strike is not just about withholding payment—it's about building tenant power and creating the leverage needed to win real victories.
+            </p>
+
+            <div class="divider"></div>
+
+            <h2>Why Co-ops?</h2>
+            <p>
+                Housing co-operatives represent a fundamentally different model of housing: one based on collective ownership, democratic control, and long-term affordability. In a co-op, residents own and manage their homes together, removing the profit motive and ensuring that housing serves the community.
+            </p>
+            <p>
+                Co-ops offer:
+            </p>
+            <ul>
+                <li>Permanently affordable housing protected from market speculation</li>
+                <li>Democratic decision-making where residents control their living conditions</li>
+                <li>Stable communities that can't be displaced by investors</li>
+                <li>A proven model that has worked for decades across Quebec and around the world</li>
+            </ul>
+            <p>
+                We believe that housing co-operatives should be the dominant form of housing in our city. By converting rental buildings into co-ops, we can permanently remove housing from the speculative market and ensure that it serves the people who live in it. Our vision is a Tiohtià:ke where every resident has access to stable, affordable, community-controlled housing.
+            </p>
+        </div>
+    </div>
+
+    <!-- RESOURCES PAGE -->
+    <div id="resources" class="page">
+        <div class="page-header">
+            <div class="page-nav">
+                <div class="logo" onclick="showPage('landing')">Tiohtià:ke Strike</div>
+                <div class="page-nav-links">
+                    <a href="#" onclick="showPage('about'); return false;">About</a>
+                    <a href="https://cryptpad.fr/form/#/2/form/view/X8D3gsHhnBnWw0pgldRGxipkdX0l7YOxJqQfTihOhnE/" target="_blank">Petition</a>
+                    <a href="#" onclick="showPage('resources'); return false;">Resources</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="content-section">
+            <h2>Resources</h2>
+            <p>
+                Find essential information, guides, and tools to support your organizing efforts and understand your rights as a tenant.
+            </p>
+
+            <div class="resource-grid">
+                <div class="resource-card">
+                    <h3>Pamphlet</h3>
+                    <p>
+                        Download and share our informational pamphlet to spread the word about the Tiohtià:ke Strike.
+                    </p>
+                    <a href="/resources/TIOHTIAKE STRIKE.pdf" target="_blank">Get Pamphlet</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Page navigation
+        function showPage(pageId) {
+            document.querySelectorAll('.page').forEach(page => {
+                page.classList.remove('active');
+            });
+            document.getElementById(pageId).classList.add('active');
+            window.scrollTo(0, 0);
+        }
+
+        // Mobile parallax scroll effect for painting
+        const heroBg = document.getElementById('heroBg');
+        const isMobile = window.innerWidth <= 768;
+
+        if (isMobile) {
+            window.addEventListener('scroll', () => {
+                if (document.getElementById('landing').classList.contains('active')) {
+                    const scrollY = window.scrollY;
+                    const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+                    const scrollPercentage = scrollY / maxScroll;
+                    
+                    // Move background from left (0%) to right (100%) as user scrolls
+                    const bgPosition = scrollPercentage * 100;
+                    heroBg.style.backgroundPosition = `${bgPosition}% center`;
+                }
+            });
+        }
+
+        // Desktop parallax effect
+        if (!isMobile) {
+            window.addEventListener('scroll', () => {
+                if (document.getElementById('landing').classList.contains('active')) {
+                    const scrollY = window.scrollY;
+                    heroBg.style.transform = `translateY(${scrollY * 0.5}px)`;
+                }
+            });
+        }
+    </script>
+</body>
 </html>
