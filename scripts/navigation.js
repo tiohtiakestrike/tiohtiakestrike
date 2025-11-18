@@ -95,6 +95,9 @@ export function showPage(pageId) {
     // Remove tabindex after focus to avoid tab order issues
     setTimeout(() => mainContent.removeAttribute('tabindex'), 100);
   }
+  
+  // Dispatch event for animations to refresh
+  window.dispatchEvent(new CustomEvent('pageChanged', { detail: { pageId } }));
 }
 
 /**

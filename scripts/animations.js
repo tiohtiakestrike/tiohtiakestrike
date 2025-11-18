@@ -4,6 +4,18 @@
 // Register ScrollTrigger plugin
 gsap.registerPlugin(ScrollTrigger);
 
+// Split text utility for character/word animations
+function splitText(element) {
+    if (!element) return null;
+    // Check if already split
+    if (element.querySelector('.word')) return element.querySelectorAll('.word');
+    const text = element.textContent.trim();
+    if (!text) return null;
+    const words = text.split(/\s+/);
+    element.innerHTML = words.map(word => `<span class="word-wrapper"><span class="word">${word}</span></span>`).join(' ');
+    return element.querySelectorAll('.word');
+}
+
 // Check for reduced motion preference
 const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
@@ -21,7 +33,7 @@ if (!prefersReducedMotion) {
     gsap.set('.divider', { scaleX: 0 });
 }
 
-// Landing page hero animation - Creates welcoming first impression
+// Landing page hero animation - Creates welcoming first impression with storytelling
 function animateLandingPage() {
     if (prefersReducedMotion) {
         // Just show everything immediately
@@ -29,26 +41,65 @@ function animateLandingPage() {
         return;
     }
     
+    const h1 = document.querySelector('.hero-content h1');
+    const subtitle = document.querySelector('.hero-content .subtitle');
+    
     const tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
     
-    // Title appears first - establishes identity
-    tl.to('.hero-content h1', {
+    // Title appears with character-by-character reveal for dramatic effect
+    if (h1) {
+        const words = splitText(h1);
+        if (words && words.length) {
+            gsap.set(words, { opacity: 0, y: 30, rotationX: -90 });
+            tl.to(words, {
+                opacity: 1,
+                y: 0,
+                rotationX: 0,
+                duration: 0.6,
+                stagger: 0.05,
+                ease: 'back.out(1.2)'
+            });
+        } else {
+            tl.to(h1, {
+                opacity: 1,
+                y: 0,
+                duration: 0.8
+            });
+        }
+    }
+    
+    // Subtitle follows with word-by-word reveal
+    if (subtitle) {
+        const words = splitText(subtitle);
+        if (words && words.length) {
+            gsap.set(words, { opacity: 0, y: 20 });
+            tl.to(words, {
+                opacity: 1,
+                y: 0,
+                duration: 0.4,
+                stagger: 0.03,
+                ease: 'power2.out'
+            }, '-=0.3');
+        } else {
+            tl.to(subtitle, {
+                opacity: 1,
+                y: 0,
+                duration: 0.8
+            }, '-=0.4');
+        }
+    }
+    
+    // Navigation appears last - guides to action with staggered reveal
+    tl.to('.nav-links a', {
         opacity: 1,
         y: 0,
-        duration: 0.8
-    })
-    // Subtitle follows - explains purpose
-    .to('.hero-content .subtitle', {
-        opacity: 1,
-        y: 0,
-        duration: 0.8
-    }, '-=0.4')
-    // Navigation appears last - guides to action
-    .to('.nav-links a', {
-        opacity: 1,
-        y: 0,
+        scale: 1,
         duration: 0.6,
-        stagger: 0.1,
+        stagger: {
+            amount: 0.4,
+            from: 'center'
+        },
+        ease: 'back.out(1.2)',
         onComplete: () => {
             // Subtle pulse on nav links to indicate interactivity
             gsap.to('.nav-links a', {
@@ -60,10 +111,10 @@ function animateLandingPage() {
                 ease: 'power1.inOut'
             });
         }
-    }, '-=0.4');
+    }, '-=0.2');
 }
 
-// Animate content sections on page load - Creates natural reading flow
+// Animate content sections on page load - Creates natural reading flow with storytelling
 function animateContentSection() {
     const contentSection = document.querySelector('.page.active .content-section');
     if (!contentSection) return;
@@ -74,47 +125,81 @@ function animateContentSection() {
         return;
     }
     
+    // Setup scroll-triggered animations for storytelling
+    setupScrollReveals(contentSection);
+    
     const tl = gsap.timeline({ defaults: { ease: 'power2.out' } });
     
-    // Heading appears first - establishes section topic
+    // Heading appears first with dramatic reveal - establishes section topic
     const h2 = contentSection.querySelector('h2');
     if (h2) {
         tl.to(h2, {
             opacity: 1,
             x: 0,
-            duration: 0.6
+            scale: 1,
+            duration: 0.8,
+            ease: 'back.out(1.2)'
         });
     }
     
-    // Paragraphs follow in sequence - guides reading
+    // Paragraphs follow in sequence with word reveals - guides reading
     const paragraphs = contentSection.querySelectorAll('p');
     if (paragraphs.length) {
-        tl.to(paragraphs, {
-            opacity: 1,
-            y: 0,
-            duration: 0.5,
-            stagger: 0.08 // Slightly faster for better flow
-        }, '-=0.3');
+        paragraphs.forEach((p, index) => {
+            const words = splitText(p);
+            if (words && words.length) {
+                gsap.set(words, { opacity: 0, y: 15 });
+                tl.to(words, {
+                    opacity: 1,
+                    y: 0,
+                    duration: 0.3,
+                    stagger: 0.02,
+                    ease: 'power2.out'
+                }, index === 0 ? '-=0.4' : '-=0.2');
+            } else {
+                tl.to(p, {
+                    opacity: 1,
+                    y: 0,
+                    duration: 0.5
+                }, index === 0 ? '-=0.4' : '-=0.2');
+            }
+        });
     }
     
-    // Lists appear with content
+    // Lists appear with staggered item reveals - each point tells part of the story
     const lists = contentSection.querySelectorAll('ul');
     if (lists.length) {
-        tl.to(lists, {
-            opacity: 1,
-            y: 0,
-            duration: 0.5
-        }, '-=0.2');
+        lists.forEach(list => {
+            const items = list.querySelectorAll('li');
+            gsap.set(items, { opacity: 0, x: -20 });
+            tl.to(items, {
+                opacity: 1,
+                x: 0,
+                duration: 0.4,
+                stagger: 0.1,
+                ease: 'power2.out'
+            }, '-=0.2');
+        });
     }
     
-    // Dividers expand to show section breaks
+    // Dividers expand to show section breaks with center-out animation
     const dividers = contentSection.querySelectorAll('.divider');
     if (dividers.length) {
-        tl.to(dividers, {
-            scaleX: 1,
-            duration: 0.6,
-            ease: 'power2.out'
-        }, '-=0.2');
+        dividers.forEach(divider => {
+            tl.to(divider, {
+                scaleX: 1,
+                duration: 0.8,
+                ease: 'power2.out',
+                onStart: () => {
+                    // Animate the center dot
+                    const dot = divider.querySelector('::after') || divider;
+                    gsap.fromTo(divider, 
+                        { '--dot-scale': 0 },
+                        { '--dot-scale': 1, duration: 0.4, ease: 'back.out(2)' }
+                    );
+                }
+            }, '-=0.2');
+        });
     }
     
     // Resource cards appear - highlights available resources
@@ -123,8 +208,10 @@ function animateContentSection() {
         tl.to(cards, {
             opacity: 1,
             y: 0,
+            scale: 1,
             duration: 0.6,
-            stagger: 0.15
+            stagger: 0.15,
+            ease: 'back.out(1.2)'
         }, '-=0.3');
     }
     
@@ -156,6 +243,105 @@ function animateContentSection() {
             stagger: 0.1
         }, '-=0.2');
     }
+}
+
+// Setup scroll-triggered reveals for storytelling sections
+function setupScrollReveals(contentSection) {
+    if (!contentSection || prefersReducedMotion) return;
+    
+    // Animate headings with dramatic reveals as they come into view
+    const headings = contentSection.querySelectorAll('h2');
+    headings.forEach((heading, index) => {
+        gsap.fromTo(heading,
+            { opacity: 0, y: 60, scale: 0.9, rotationX: -15 },
+            {
+                opacity: 1,
+                y: 0,
+                scale: 1,
+                rotationX: 0,
+                duration: 1.2,
+                ease: 'power3.out',
+                scrollTrigger: {
+                    trigger: heading,
+                    start: 'top 75%',
+                    end: 'top 50%',
+                    toggleActions: 'play none none reverse',
+                    markers: false
+                }
+            }
+        );
+    });
+    
+    // Animate paragraphs with word-by-word reveals on scroll
+    const paragraphs = contentSection.querySelectorAll('p');
+    paragraphs.forEach((p, pIndex) => {
+        const words = splitText(p);
+        if (words && words.length > 0) {
+            gsap.set(words, { opacity: 0, y: 20 });
+            ScrollTrigger.create({
+                trigger: p,
+                start: 'top 80%',
+                onEnter: () => {
+                    gsap.to(words, {
+                        opacity: 1,
+                        y: 0,
+                        duration: 0.4,
+                        stagger: 0.03,
+                        ease: 'power2.out'
+                    });
+                }
+            });
+        }
+    });
+    
+    // Animate list items with scroll trigger for dramatic reveals - each tells part of story
+    const lists = contentSection.querySelectorAll('ul');
+    lists.forEach(list => {
+        const items = list.querySelectorAll('li');
+        items.forEach((item, index) => {
+            gsap.fromTo(item,
+                { opacity: 0, x: -40, rotationY: 20, scale: 0.95 },
+                {
+                    opacity: 1,
+                    x: 0,
+                    rotationY: 0,
+                    scale: 1,
+                    duration: 0.7,
+                    ease: 'power2.out',
+                    scrollTrigger: {
+                        trigger: item,
+                        start: 'top 85%',
+                        toggleActions: 'play none none reverse',
+                        markers: false
+                    },
+                    delay: index * 0.08
+                }
+            );
+        });
+    });
+    
+    // Animate dividers with center-out expansion
+    const dividers = contentSection.querySelectorAll('.divider');
+    dividers.forEach(divider => {
+        ScrollTrigger.create({
+            trigger: divider,
+            start: 'top 80%',
+            onEnter: () => {
+                gsap.fromTo(divider,
+                    { scaleX: 0, opacity: 0 },
+                    { 
+                        scaleX: 1, 
+                        opacity: 1,
+                        duration: 1,
+                        ease: 'power2.out',
+                        onComplete: () => {
+                            divider.classList.add('revealed');
+                        }
+                    }
+                );
+            }
+        });
+    });
 }
 
 // Animate resource cards with scroll trigger - Reveals resources as user scrolls
@@ -425,6 +611,66 @@ function setupParallaxEffect() {
     });
 }
 
+// Magnetic effect for interactive elements
+function setupMagneticEffects() {
+    if (prefersReducedMotion) return;
+    
+    document.querySelectorAll('.petition-button, .nav-links a, .resource-card').forEach(element => {
+        element.addEventListener('mousemove', (e) => {
+            const rect = element.getBoundingClientRect();
+            const x = e.clientX - rect.left - rect.width / 2;
+            const y = e.clientY - rect.top - rect.height / 2;
+            
+            gsap.to(element, {
+                x: x * 0.1,
+                y: y * 0.1,
+                duration: 0.3,
+                ease: 'power2.out'
+            });
+        });
+        
+        element.addEventListener('mouseleave', () => {
+            gsap.to(element, {
+                x: 0,
+                y: 0,
+                duration: 0.5,
+                ease: 'power2.out'
+            });
+        });
+    });
+}
+
+// Animate dividers with center-out effect
+function animateDividers() {
+    if (prefersReducedMotion) return;
+    
+    document.querySelectorAll('.divider').forEach(divider => {
+        ScrollTrigger.create({
+            trigger: divider,
+            start: 'top 80%',
+            onEnter: () => {
+                gsap.fromTo(divider,
+                    { scaleX: 0, opacity: 0 },
+                    { 
+                        scaleX: 1, 
+                        opacity: 1,
+                        duration: 0.8,
+                        ease: 'power2.out',
+                        onComplete: () => {
+                            // Animate the center dot
+                            gsap.to(divider, {
+                                '--dot-opacity': 1,
+                                duration: 0.4,
+                                ease: 'back.out(2)'
+                            });
+                        }
+                    }
+                );
+            }
+        });
+    });
+}
+
 // Initialize animations when DOM is ready
 document.addEventListener('DOMContentLoaded', () => {
     // Set initial opacity for pages
@@ -444,6 +690,8 @@ document.addEventListener('DOMContentLoaded', () => {
     // Setup scroll-triggered animations (only if motion is allowed)
     if (!prefersReducedMotion) {
         setupResourceCardAnimations();
+        setupMagneticEffects();
+        animateDividers();
     }
     
     // Button animations always work (subtle feedback)
@@ -465,6 +713,17 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
     }, 2000);
+    
+    // Refresh ScrollTriggers when page changes
+    window.addEventListener('pageChanged', () => {
+        ScrollTrigger.refresh();
+        setTimeout(() => {
+            animateContentSection();
+            if (!prefersReducedMotion) {
+                setupScrollReveals(document.querySelector('.page.active .content-section'));
+            }
+        }, 100);
+    });
 });
 
 // Export functions for use in other scripts

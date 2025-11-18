@@ -49,6 +49,19 @@ async function updateTexts() {
       el.href = value;
     }
   });
+  
+  // Update all elements with data-i18n-aria-label (for aria-labels)
+  document.querySelectorAll('[data-i18n-aria-label]').forEach(el => {
+    const key = el.getAttribute('data-i18n-aria-label');
+    const keys = key.split('.');
+    let value = langStrings;
+    for (const k of keys) {
+      value = value?.[k];
+    }
+    if (value !== undefined) {
+      el.setAttribute('aria-label', value);
+    }
+  });
 }
 
 async function switchLanguage() {
