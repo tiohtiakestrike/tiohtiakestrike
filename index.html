@@ -21,7 +21,7 @@
             <div class="hero-bg" id="heroBg" role="img" aria-label="In the Time of Harmony painting by Paul Signac"></div>
             <div class="hero-bg" style="background-image: url('/assets/In\ the\ time\ of\ Harmony.png');" role="img" aria-hidden="true"></div>
             <div class="overlay"></div>
-            <div class="hero-content" id="main-content">
+            <div class="hero-content">
                 <h1 data-i18n="title">Tiohtià:ke Strike</h1>
                 <p class="subtitle" data-i18n="subtitle">
                     Building collective power for housing justice. Join us in the fight for affordable, dignified housing and community-controlled co-operatives.
@@ -249,6 +249,18 @@
     <script src="/scripts/lang-switcher.js"></script>
     <script src="/scripts/animations.js"></script>
     <script>
+        // Clear any #main-content hash on page load
+        if (window.location.hash === '#main-content') {
+            history.replaceState(null, '', window.location.pathname + window.location.search);
+        }
+        
+        // Listen for hash changes and clear #main-content if it appears
+        window.addEventListener('hashchange', function() {
+            if (window.location.hash === '#main-content') {
+                history.replaceState(null, '', window.location.pathname + window.location.search);
+            }
+        });
+        
         // Page navigation
         function showPage(pageId) {
             const currentPage = document.querySelector('.page.active');
@@ -268,6 +280,11 @@
             }
             
             window.scrollTo(0, 0);
+            
+            // Clear any hash from URL when navigating
+            if (window.location.hash) {
+                history.replaceState(null, '', window.location.pathname + window.location.search);
+            }
             
             // Hide artwork info when navigating away from landing page
             if (pageId !== 'landing') {
