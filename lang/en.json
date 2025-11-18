@@ -48,5 +48,9 @@
   "artworkArtist": "Paul Signac",
   "artworkInfo": "(1893–95). This pointillist painting represents an idealized society by the seashore where people perform various activities in harmony. Originally titled \"In the Time of Anarchy,\" it was created during Signac's engagement with socialism and anarchist politics, envisioning a utopian future where work, family, and play exist harmoniously.",
   "learnMore": "Learn more on Wikipedia",
-  "contactTitle": "Contact Us"
+  "contactTitle": "Contact Us",
+  "mailingListTitle": "Mailing List",
+  "mailingListDesc": "Stay informed about organizing efforts, actions, and updates. Join our mailing list to receive regular communications about the movement.",
+  "joinMailingList": "Join Mailing List",
+  "mailingListInstructions": "Send an email to tiohtiakestrike-subscribe@lists.riseup.net to subscribe."
 }

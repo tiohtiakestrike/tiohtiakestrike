@@ -57,6 +57,11 @@ async function switchLanguage() {
   html.lang = newLang;
   html.className = `lang-${newLang}`;
   
+  // Update aria-pressed on all language switcher buttons
+  document.querySelectorAll('.lang-switcher').forEach(btn => {
+    btn.setAttribute('aria-pressed', newLang === 'fr' ? 'true' : 'false');
+  });
+  
   // Announce language change to screen readers
   const announcement = document.createElement('div');
   announcement.setAttribute('role', 'status');

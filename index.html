@@ -7,41 +7,44 @@
     <link rel="stylesheet" href="/styles/site.css">
 </head>
 <body>
+    <!-- Skip to main content link for screen readers -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    
     <!-- LANDING PAGE -->
     <div id="landing" class="page active">
-        <div class="page-header">
-            <div class="page-nav">
-                <div class="logo logo-no-pointer" onclick="showPage('landing')" data-i18n="title">Tiohtià:ke Strike</div>
+        <header class="page-header" role="banner">
+            <nav class="page-nav" role="navigation" aria-label="Main navigation">
+                <a href="#" onclick="showPage('landing'); return false;" class="logo logo-no-pointer" data-i18n="title" aria-label="Tiohtià:ke Strike - Home">Tiohtià:ke Strike</a>
                 <div class="lang-switcher-container">
-                    <button class="lang-switcher" aria-label="Switch language">FR</button>
+                    <button class="lang-switcher" aria-label="Switch language" aria-pressed="false">FR</button>
                 </div>
-            </div>
-        </div>
+            </nav>
+        </header>
         <div class="hero">
-            <div class="hero-bg" id="heroBg"></div>
-            <div class="hero-bg" style="background-image: url('/assets/In\ the\ time\ of\ Harmony.png');"></div>
+            <div class="hero-bg" id="heroBg" role="img" aria-label="In the Time of Harmony painting by Paul Signac"></div>
+            <div class="hero-bg" style="background-image: url('/assets/In\ the\ time\ of\ Harmony.png');" role="img" aria-hidden="true"></div>
             <div class="overlay"></div>
-            <div class="hero-content">
+            <div class="hero-content" id="main-content">
                 <h1 data-i18n="title">Tiohtià:ke Strike</h1>
                 <p class="subtitle" data-i18n="subtitle">
                     Building collective power for housing justice. Join us in the fight for affordable, dignified housing and community-controlled co-operatives.
                 </p>
-                <div class="nav-links">
-                    <a href="#" onclick="showPage('about'); return false;" data-i18n="about">About</a>
-                    <a href="#" onclick="showPage('petition'); return false;" data-i18n="petition">Petition</a>
-                    <a href="#" onclick="showPage('signal'); return false;" data-i18n="signal">Signal</a>
-                    <a href="#" onclick="showPage('resources'); return false;" data-i18n="resources">Resources</a>
+                <nav class="nav-links" role="navigation" aria-label="Page navigation">
+                    <a href="#" onclick="showPage('about'); return false;" data-i18n="about" aria-label="Go to About page">About</a>
+                    <a href="#" onclick="showPage('petition'); return false;" data-i18n="petition" aria-label="Go to Petition page">Petition</a>
+                    <a href="#" onclick="showPage('signal'); return false;" data-i18n="signal" aria-label="Go to Signal page">Signal</a>
+                    <a href="#" onclick="showPage('resources'); return false;" data-i18n="resources" aria-label="Go to Resources page">Resources</a>
+                </nav>
                 </div>
-            </div>
             <button class="artwork-info-btn" onclick="toggleArtworkInfo()" aria-label="Information about the artwork">ℹ</button>
-            <div class="artwork-info-panel" id="artworkInfo">
-                <button class="close-btn" onclick="toggleArtworkInfo()" aria-label="Close">×</button>
-                <h3 data-i18n="artworkTitle">In the Time of Harmony</h3>
+            <div class="artwork-info-panel" id="artworkInfo" role="dialog" aria-labelledby="artworkTitle" aria-modal="true" aria-hidden="true">
+                <button class="close-btn" onclick="toggleArtworkInfo()" aria-label="Close artwork information panel">×</button>
+                <h3 id="artworkTitle" data-i18n="artworkTitle">In the Time of Harmony</h3>
                 <p>
                     <strong data-i18n="artworkArtist">Paul Signac</strong> <span data-i18n="artworkInfo">(1893–95). This pointillist painting represents an idealized society by the seashore where people perform various activities in harmony. Originally titled "In the Time of Anarchy," it was created during Signac's engagement with socialism and anarchist politics, envisioning a utopian future where work, family, and play exist harmoniously.</span>
                 </p>
                 <p>
-                    <a href="https://en.wikipedia.org/wiki/In_the_Time_of_Harmony" target="_blank" data-i18n="learnMore">Learn more on Wikipedia</a>
+                    <a href="https://en.wikipedia.org/wiki/In_the_Time_of_Harmony" target="_blank" rel="noopener noreferrer" data-i18n="learnMore" aria-label="Learn more about In the Time of Harmony painting on Wikipedia - opens in new window">Learn more on Wikipedia</a>
                 </p>
             </div>
         </div>
@@ -49,22 +52,22 @@
 
     <!-- ABOUT PAGE -->
     <div id="about" class="page">
-        <div class="page-header">
-            <div class="page-nav">
-                <div class="logo" onclick="showPage('landing')" data-i18n="title">Tiohtià:ke Strike</div>
+        <header class="page-header" role="banner">
+            <nav class="page-nav" role="navigation" aria-label="Main navigation">
+                <a href="#" onclick="showPage('landing'); return false;" class="logo" data-i18n="title" aria-label="Tiohtià:ke Strike - Home">Tiohtià:ke Strike</a>
                 <div class="page-nav-links">
-                    <a href="#" onclick="showPage('about'); return false;" data-i18n="about">About</a>
-                    <a href="#" onclick="showPage('petition'); return false;" data-i18n="petition">Petition</a>
-                    <a href="#" onclick="showPage('signal'); return false;" data-i18n="signal">Signal</a>
-                    <a href="#" onclick="showPage('resources'); return false;" data-i18n="resources">Resources</a>
+                    <a href="#" onclick="showPage('about'); return false;" data-i18n="about" aria-label="Go to About page">About</a>
+                    <a href="#" onclick="showPage('petition'); return false;" data-i18n="petition" aria-label="Go to Petition page">Petition</a>
+                    <a href="#" onclick="showPage('signal'); return false;" data-i18n="signal" aria-label="Go to Signal page">Signal</a>
+                    <a href="#" onclick="showPage('resources'); return false;" data-i18n="resources" aria-label="Go to Resources page">Resources</a>
                 </div>
                 <div class="lang-switcher-container">
-                    <button class="lang-switcher" aria-label="Switch language">FR</button>
-                </div>
+                    <button class="lang-switcher" aria-label="Switch language" aria-pressed="false">FR</button>
             </div>
-        </div>
+            </nav>
+        </header>
 
-        <div class="content-section">
+        <main class="content-section" role="main">
             <h2 data-i18n="whoAreWe">Who Are We?</h2>
             <p data-i18n="whoAreWePara1">
                 We are tenants, organizers, and community members in Tiohtià:ke (Montreal) who believe that housing is a human right, not a commodity. We come together from diverse backgrounds, united by our shared experience of rising rents, deteriorating housing conditions, and the erosion of our right to dignified shelter.
@@ -111,27 +114,27 @@
             <p data-i18n="whyCoopsPara3">
                 We believe that housing co-operatives should be the dominant form of housing in our city. By converting rental buildings into co-ops, we can permanently remove housing from the speculative market and ensure that it serves the people who live in it. Our vision is a Tiohtià:ke where every resident has access to stable, affordable, community-controlled housing.
             </p>
-        </div>
+        </main>
     </div>
 
     <!-- RESOURCES PAGE -->
     <div id="resources" class="page">
-        <div class="page-header">
-            <div class="page-nav">
-                <div class="logo" onclick="showPage('landing')" data-i18n="title">Tiohtià:ke Strike</div>
+        <header class="page-header" role="banner">
+            <nav class="page-nav" role="navigation" aria-label="Main navigation">
+                <a href="#" onclick="showPage('landing'); return false;" class="logo" data-i18n="title" aria-label="Tiohtià:ke Strike - Home">Tiohtià:ke Strike</a>
                 <div class="page-nav-links">
-                    <a href="#" onclick="showPage('about'); return false;" data-i18n="about">About</a>
-                    <a href="#" onclick="showPage('petition'); return false;" data-i18n="petition">Petition</a>
-                    <a href="#" onclick="showPage('signal'); return false;" data-i18n="signal">Signal</a>
-                    <a href="#" onclick="showPage('resources'); return false;" data-i18n="resources">Resources</a>
+                    <a href="#" onclick="showPage('about'); return false;" data-i18n="about" aria-label="Go to About page">About</a>
+                    <a href="#" onclick="showPage('petition'); return false;" data-i18n="petition" aria-label="Go to Petition page">Petition</a>
+                    <a href="#" onclick="showPage('signal'); return false;" data-i18n="signal" aria-label="Go to Signal page">Signal</a>
+                    <a href="#" onclick="showPage('resources'); return false;" data-i18n="resources" aria-label="Go to Resources page">Resources</a>
                 </div>
                 <div class="lang-switcher-container">
-                    <button class="lang-switcher" aria-label="Switch language">FR</button>
-                </div>
+                    <button class="lang-switcher" aria-label="Switch language" aria-pressed="false">FR</button>
             </div>
-        </div>
+            </nav>
+        </header>
 
-        <div class="content-section">
+        <main class="content-section" role="main">
             <h2 data-i18n="resourcesTitle">Resources</h2>
             <p data-i18n="resourcesPara">
                 Find essential information, guides, and tools to support your organizing efforts and understand your rights as a tenant.
@@ -143,48 +146,63 @@
                     <p data-i18n="pamphletDesc">
                         Download and share our informational pamphlet to spread the word about the Tiohtià:ke Strike.
                     </p>
-                    <a href="/resources/TIOHTIAKE STRIKE.pdf" target="_blank" data-i18n="getPamphlet" data-i18n-href="pamphletUrl">Get Pamphlet</a>
+                    <a href="/resources/TIOHTIAKE STRIKE.pdf" target="_blank" data-i18n="getPamphlet" data-i18n-href="pamphletUrl" aria-label="Download the Tiohtià:ke Strike pamphlet (PDF)">Get Pamphlet</a>
+                </div>
+                <div class="resource-card">
+                    <h3 data-i18n="mailingListTitle">Mailing List</h3>
+                    <p data-i18n="mailingListDesc">
+                        Stay informed about organizing efforts, actions, and updates. Join our mailing list to receive regular communications about the movement.
+                    </p>
+                    <a href="mailto:tiohtiakestrike-subscribe@lists.riseup.net" aria-label="Subscribe to mailing list by sending email to tiohtiakestrike-subscribe@lists.riseup.net" style="display: inline-flex; align-items: center; gap: 0.5rem; margin-top: 1rem;">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" style="width: 20px; height: 20px; fill: currentColor;">
+                            <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+                        </svg>
+                        <span data-i18n="joinMailingList">Join Mailing List</span>
+                    </a>
+                    <p style="margin-top: 1rem; font-size: 0.9rem; color: var(--color-text-medium);" data-i18n="mailingListInstructions">
+                        Send an email to <strong>tiohtiakestrike-subscribe@lists.riseup.net</strong> to subscribe.
+                    </p>
                 </div>
             </div>
 
             <div class="contact-section">
                 <h2 data-i18n="contactTitle">Contact Us</h2>
                 <div class="contact-grid">
-                    <a href="mailto:TIOHTIAKESTRIKE@PROTON.ME" class="contact-item">
-                        <svg class="contact-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <a href="mailto:TIOHTIAKESTRIKE@PROTON.ME" class="contact-item" aria-label="Email us at TIOHTIAKESTRIKE@PROTON.ME">
+                        <svg class="contact-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                             <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
                         </svg>
                         <span class="contact-text">TIOHTIAKESTRIKE@PROTON.ME</span>
                     </a>
-                    <a href="https://instagram.com/tiohtiake.strike" target="_blank" rel="noopener noreferrer" class="contact-item">
-                        <svg class="contact-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <a href="https://instagram.com/tiohtiake.strike" target="_blank" rel="noopener noreferrer" class="contact-item" aria-label="Follow us on Instagram at @TIOHTIAKE.STRIKE">
+                        <svg class="contact-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                             <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
                         </svg>
                         <span class="contact-text">@TIOHTIAKE.STRIKE</span>
                     </a>
                 </div>
             </div>
-        </div>
+        </main>
     </div>
 
     <!-- PETITION PAGE -->
     <div id="petition" class="page">
-        <div class="page-header">
-            <div class="page-nav">
-                <div class="logo" onclick="showPage('landing')" data-i18n="title">Tiohtià:ke Strike</div>
+        <header class="page-header" role="banner">
+            <nav class="page-nav" role="navigation" aria-label="Main navigation">
+                <a href="#" onclick="showPage('landing'); return false;" class="logo" data-i18n="title" aria-label="Tiohtià:ke Strike - Home">Tiohtià:ke Strike</a>
                 <div class="page-nav-links">
-                    <a href="#" onclick="showPage('about'); return false;" data-i18n="about">About</a>
-                    <a href="#" onclick="showPage('petition'); return false;" data-i18n="petition">Petition</a>
-                    <a href="#" onclick="showPage('signal'); return false;" data-i18n="signal">Signal</a>
-                    <a href="#" onclick="showPage('resources'); return false;" data-i18n="resources">Resources</a>
+                    <a href="#" onclick="showPage('about'); return false;" data-i18n="about" aria-label="Go to About page">About</a>
+                    <a href="#" onclick="showPage('petition'); return false;" data-i18n="petition" aria-label="Go to Petition page">Petition</a>
+                    <a href="#" onclick="showPage('signal'); return false;" data-i18n="signal" aria-label="Go to Signal page">Signal</a>
+                    <a href="#" onclick="showPage('resources'); return false;" data-i18n="resources" aria-label="Go to Resources page">Resources</a>
                 </div>
                 <div class="lang-switcher-container">
-                    <button class="lang-switcher" aria-label="Switch language">FR</button>
+                    <button class="lang-switcher" aria-label="Switch language" aria-pressed="false">FR</button>
                 </div>
-            </div>
-        </div>
+            </nav>
+        </header>
 
-        <div class="content-section">
+        <main class="content-section" role="main">
             <h2 data-i18n="petitionTitle">Sign the Petition</h2>
             <p data-i18n="petitionPara1">
                 Join us in building collective power for housing justice. By signing the petition, you're taking a stand for affordable, dignified housing and community-controlled co-operatives in Tiohtià:ke.
@@ -194,31 +212,31 @@
             </p>
             
             <div class="text-center" style="margin: 3rem 0;">
-                <a href="https://cryptpad.fr/form/#/2/form/view/X8D3gsHhnBnWw0pgldRGxipkdX0l7YOxJqQfTihOhnE/" target="_blank" class="petition-button">
-                    <span data-i18n="signPetitionButton">Sign the Petition</span>
-                </a>
+                    <a href="https://cryptpad.fr/form/#/2/form/view/X8D3gsHhnBnWw0pgldRGxipkdX0l7YOxJqQfTihOhnE/" target="_blank" rel="noopener noreferrer" class="petition-button" aria-label="Sign the petition - opens in new window">
+                        <span data-i18n="signPetitionButton">Sign the Petition</span>
+                    </a>
             </div>
-        </div>
+        </main>
     </div>
 
     <!-- SIGNAL PAGE -->
     <div id="signal" class="page">
-        <div class="page-header">
-            <div class="page-nav">
-                <div class="logo" onclick="showPage('landing')" data-i18n="title">Tiohtià:ke Strike</div>
+        <header class="page-header" role="banner">
+            <nav class="page-nav" role="navigation" aria-label="Main navigation">
+                <a href="#" onclick="showPage('landing'); return false;" class="logo" data-i18n="title" aria-label="Tiohtià:ke Strike - Home">Tiohtià:ke Strike</a>
                 <div class="page-nav-links">
-                    <a href="#" onclick="showPage('about'); return false;" data-i18n="about">About</a>
-                    <a href="#" onclick="showPage('petition'); return false;" data-i18n="petition">Petition</a>
-                    <a href="#" onclick="showPage('signal'); return false;" data-i18n="signal">Signal</a>
-                    <a href="#" onclick="showPage('resources'); return false;" data-i18n="resources">Resources</a>
+                    <a href="#" onclick="showPage('about'); return false;" data-i18n="about" aria-label="Go to About page">About</a>
+                    <a href="#" onclick="showPage('petition'); return false;" data-i18n="petition" aria-label="Go to Petition page">Petition</a>
+                    <a href="#" onclick="showPage('signal'); return false;" data-i18n="signal" aria-label="Go to Signal page">Signal</a>
+                    <a href="#" onclick="showPage('resources'); return false;" data-i18n="resources" aria-label="Go to Resources page">Resources</a>
                 </div>
                 <div class="lang-switcher-container">
-                    <button class="lang-switcher" aria-label="Switch language">FR</button>
+                    <button class="lang-switcher" aria-label="Switch language" aria-pressed="false">FR</button>
                 </div>
-            </div>
-        </div>
+            </nav>
+        </header>
 
-        <div class="content-section">
+        <main class="content-section" role="main">
             <h2 data-i18n="signalGroupTitle">Signal Group</h2>
             <p data-i18n="signalGroupPara1">
                 Our Signal group is where we coordinate our organizing efforts, share updates, and build community. This is where tenants come together to plan actions, support each other, and work towards our shared goals.
@@ -236,7 +254,10 @@
             document.querySelectorAll('.page').forEach(page => {
                 page.classList.remove('active');
             });
-            document.getElementById(pageId).classList.add('active');
+            const targetPage = document.getElementById(pageId);
+            if (targetPage) {
+                targetPage.classList.add('active');
+            }
             window.scrollTo(0, 0);
             
             // Hide artwork info when navigating away from landing page
@@ -244,7 +265,17 @@
                 const artworkInfo = document.getElementById('artworkInfo');
                 if (artworkInfo) {
                     artworkInfo.classList.remove('active');
+                    artworkInfo.setAttribute('aria-hidden', 'true');
                 }
+            }
+            
+            // Focus management for screen readers - focus main content
+            const mainContent = targetPage ? targetPage.querySelector('main, [role="main"], .content-section') : null;
+            if (mainContent) {
+                mainContent.setAttribute('tabindex', '-1');
+                mainContent.focus();
+                // Remove tabindex after focus to avoid tab order issues
+                setTimeout(() => mainContent.removeAttribute('tabindex'), 100);
             }
         }
 
@@ -252,9 +283,32 @@
         function toggleArtworkInfo() {
             const artworkInfo = document.getElementById('artworkInfo');
             if (artworkInfo) {
-                artworkInfo.classList.toggle('active');
+                const isActive = artworkInfo.classList.toggle('active');
+                artworkInfo.setAttribute('aria-hidden', !isActive);
+                if (isActive) {
+                    // Focus the close button when opening
+                    const closeBtn = artworkInfo.querySelector('.close-btn');
+                    if (closeBtn) {
+                        closeBtn.focus();
+                    }
+                }
             }
         }
+
+        // Close artwork info panel with ESC key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                const artworkInfo = document.getElementById('artworkInfo');
+                if (artworkInfo && artworkInfo.classList.contains('active')) {
+                    artworkInfo.classList.remove('active');
+                    // Return focus to the info button
+                    const infoBtn = document.querySelector('.artwork-info-btn');
+                    if (infoBtn) {
+                        infoBtn.focus();
+                    }
+                }
+            }
+        });
 
         // Mobile parallax scroll effect for painting
         const heroBg = document.getElementById('heroBg');
