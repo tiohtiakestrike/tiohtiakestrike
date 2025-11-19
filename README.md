@@ -15,6 +15,7 @@ We welcome contributions! This project is open to everyone who wants to help imp
 1. **Fork the repository** - Click the "Fork" button to create your own copy
 2. **Create an issue** - Found a bug or have a suggestion? Open an issue to let us know
 3. **Submit a pull request** - Made improvements? Create a PR and we'll review it
+   - **Include a preview link** - Please provide a preview of your changes using a service like [Netlify](https://www.netlify.com/), [Vercel](https://vercel.com/), [GitHub Pages](https://pages.github.com/), or similar. This makes it much easier to review your changes!
 4. **Share feedback** - Your ideas and suggestions are valuable!
 
 ### Areas Where We Need Help
@@ -47,7 +48,14 @@ We welcome contributions! This project is open to everyone who wants to help imp
 
 3. Make your changes and test them locally
 
-4. Submit a pull request with a clear description of your changes
+4. Deploy a preview (optional but recommended):
+   - Use [Netlify Drop](https://app.netlify.com/drop) to quickly deploy your fork
+   - Or use [Vercel](https://vercel.com/), [GitHub Pages](https://pages.github.com/), or any other static hosting service
+   - This creates a live preview link you can share
+
+5. Submit a pull request with:
+   - A clear description of your changes
+   - A preview link (if available) so reviewers can see your changes in action
 
 ## 📧 Contact
 
