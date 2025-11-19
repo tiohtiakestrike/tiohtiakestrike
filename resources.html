@@ -3,7 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Resources from Tiohtià:ke Strike - Download our pamphlet, join the mailing list, and access materials about the rent strike movement.">
+    <meta name="keywords" content="Tiohtià:ke Strike, resources, pamphlet, mailing list, rent strike materials, housing justice">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self' https://cryptpad.fr;">
     <title>Resources - Tiohtià:ke Strike</title>
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+    <link rel="dns-prefetch" href="https://fonts.gstatic.com">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -24,8 +30,8 @@
                 <div class="mobile-menu-content">
                     <a href="/about.html" data-i18n="about" data-i18n-aria-label="ariaGoToAbout" aria-label="Go to About page"></a>
                     <a href="/petition.html" data-i18n="petition" data-i18n-aria-label="ariaGoToPetition" aria-label="Go to Petition page"></a>
-                    <a href="/contact.html" data-i18n="contact" data-i18n-aria-label="ariaGoToContact" aria-label="Go to Contact page"></a>
                     <a href="/resources.html" data-i18n="resources" data-i18n-aria-label="ariaGoToResources" aria-label="Go to Resources page"></a>
+                    <a href="/contact.html" data-i18n="contact" data-i18n-aria-label="ariaGoToContact" aria-label="Go to Contact page"></a>
                     <div class="lang-switcher-container">
                         <button class="lang-switcher" data-i18n-aria-label="ariaSwitchLanguage" aria-label="Switch language" aria-pressed="false"></button>
                     </div>
@@ -42,7 +48,7 @@
             <div class="resource-card">
                 <h3 data-i18n="pamphlet"></h3>
                 <p data-i18n="pamphletDesc"></p>
-                <a href="/resources/TIOHTIAKE STRIKE.pdf" target="_blank" class="resource-link" data-i18n-aria-label="ariaDownloadPamphlet" aria-label="Download the Tiohtià:ke Strike pamphlet (PDF)">
+                <a href="/resources/TIOHTIAKE STRIKE.pdf" target="_blank" rel="noopener noreferrer" class="resource-link" data-i18n-aria-label="ariaDownloadPamphlet" aria-label="Download the Tiohtià:ke Strike pamphlet (PDF)">
                     <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                         <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/>
                     </svg>
@@ -65,8 +71,8 @@
         <p class="more-resources" data-i18n="moreResourcesComing" style="text-align: center; margin-top: 2rem; font-style: italic; color: var(--color-text-muted);"></p>
     </main>
 
-    <script src="/scripts/common.js"></script>
-    <script src="/scripts/lang-switcher.js"></script>
+    <script src="/scripts/common.js" defer></script>
+    <script src="/scripts/lang-switcher.js" defer></script>
 </body>
 </html>
 
