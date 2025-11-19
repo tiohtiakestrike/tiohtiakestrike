@@ -12,7 +12,8 @@
     <link rel="dns-prefetch" href="https://fonts.gstatic.com">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet"></noscript>
     <link rel="stylesheet" href="/styles/site.css">
 </head>
 <body>
@@ -49,6 +50,17 @@
             </div>
         </div>
     </div>
+
+    <noscript>
+        <style>
+            .page-nav-links { display: flex !important; }
+            .mobile-menu-toggle { display: none !important; }
+            [data-i18n] { visibility: visible !important; }
+        </style>
+        <p style="text-align: center; padding: 2rem; background: #f0f0f0; margin: 0;">
+            <strong>JavaScript is disabled.</strong> Some features may not work. Please enable JavaScript for the best experience.
+        </p>
+    </noscript>
 
     <script src="/scripts/common.js" defer></script>
     <script src="/scripts/lang-switcher.js" defer></script>

@@ -66,5 +66,9 @@
   "ariaEmailUs": "Nous envoyer un courriel à TIOHTIAKESTRIKE@PROTON.ME",
   "ariaFollowInstagram": "Nous suivre sur Instagram à @TIOHTIAKE.STRIKE",
   "ariaSignPetition": "Signer la pétition - s'ouvre dans une nouvelle fenêtre",
-  "moreResourcesComing": "Plus de ressources à venir..."
+  "moreResourcesComing": "Plus de ressources à venir...",
+  "error404Title": "404 - Page introuvable",
+  "error404Message": "Page introuvable",
+  "error404Description": "La page que vous recherchez n'existe pas ou a été déplacée.",
+  "error404Home": "Aller à l'accueil"
 }

@@ -66,5 +66,9 @@
   "ariaEmailUs": "Email us at TIOHTIAKESTRIKE@PROTON.ME",
   "ariaFollowInstagram": "Follow us on Instagram at @TIOHTIAKE.STRIKE",
   "ariaSignPetition": "Sign the petition - opens in new window",
-  "moreResourcesComing": "More resources coming soon..."
+  "moreResourcesComing": "More resources coming soon...",
+  "error404Title": "404 - Page Not Found",
+  "error404Message": "Page Not Found",
+  "error404Description": "The page you're looking for doesn't exist or has been moved.",
+  "error404Home": "Go to Homepage"
 }

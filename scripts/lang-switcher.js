@@ -6,15 +6,34 @@ async function loadLangStrings(lang) {
   try {
     // Add cache-busting timestamp to ensure fresh load
     const cacheBuster = new Date().getTime();
-    const res = await fetch(`lang/${lang}.json?v=${cacheBuster}`);
+    // Add timeout for slow connections (5 seconds)
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), 5000);
+    
+    const res = await fetch(`lang/${lang}.json?v=${cacheBuster}`, {
+      signal: controller.signal,
+      cache: 'no-cache'
+    });
+    clearTimeout(timeoutId);
+    
     if (!res.ok) {
-      throw new Error(`Failed to load ${lang}.json`);
+      throw new Error(`Failed to load ${lang}.json: ${res.status}`);
     }
     langStrings = await res.json();
     console.log(`Loaded ${Object.keys(langStrings).length} translations for ${lang}`);
   } catch (e) {
-    console.error(`Error loading language ${lang}:`, e);
+    if (e.name === 'AbortError') {
+      console.warn(`Timeout loading language ${lang}.json - using fallback`);
+    } else {
+      console.error(`Error loading language ${lang}:`, e);
+    }
+    // Fallback: try to load from cache or use empty object
     langStrings = {};
+    // Make sure content is still visible even if translations fail
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+      el.style.visibility = 'visible';
+      el.style.display = '';
+    });
   }
 }
 

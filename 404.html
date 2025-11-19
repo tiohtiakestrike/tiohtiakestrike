@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en" class="lang-en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Page not found - Tiohtià:ke Strike">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self' https://cryptpad.fr;">
+    <title data-i18n="error404Title">404 - Page Not Found | Tiohtià:ke Strike</title>
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+    <link rel="dns-prefetch" href="https://fonts.gstatic.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet"></noscript>
+    <link rel="stylesheet" href="/styles/site.css">
+    <style>
+        .error-hero {
+            position: relative;
+            min-height: calc(100vh - 80px);
+            width: 100%;
+            overflow: hidden;
+        }
+        .error-hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('/assets/In\ the\ time\ of\ Harmony.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+        .error-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, 
+                rgba(74, 124, 89, 0.25), 
+                rgba(58, 99, 71, 0.45)
+            );
+            z-index: 5;
+        }
+        .error-content {
+            position: relative;
+            z-index: 100;
+            height: 100%;
+            min-height: calc(100vh - 80px);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: var(--spacing-lg);
+            color: var(--color-text-light);
+        }
+        .error-code {
+            font-family: var(--font-family-display);
+            font-size: clamp(6rem, 15vw, 12rem);
+            font-weight: 700;
+            color: var(--color-text-light);
+            margin-bottom: clamp(0.5rem, 2vw, 1rem);
+            text-shadow: 3px 3px 16px rgba(0,0,0,0.9),
+                         0 2px 6px rgba(0,0,0,0.7);
+            letter-spacing: -0.02em;
+            line-height: 1;
+            opacity: 0.95;
+        }
+        .error-message {
+            font-family: var(--font-family-display);
+            font-size: clamp(1.5rem, 4vw, 3rem);
+            font-weight: 600;
+            color: var(--color-text-light);
+            margin-bottom: clamp(1rem, 3vw, 1.5rem);
+            text-shadow: 2px 2px 12px rgba(0,0,0,0.9),
+                         0 1px 4px rgba(0,0,0,0.5);
+            letter-spacing: -0.01em;
+        }
+        .error-description {
+            font-size: clamp(0.9rem, 2.5vw, 1.2rem);
+            max-width: 600px;
+            margin: 0 auto clamp(2rem, 5vw, 3rem);
+            line-height: 1.6;
+            text-shadow: 1px 1px 6px rgba(0,0,0,0.9),
+                         0 1px 3px rgba(0,0,0,0.5);
+            color: var(--color-text-light);
+        }
+        .error-links {
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-md);
+            align-items: center;
+            max-width: 300px;
+            width: 100%;
+        }
+        .error-links a {
+            color: var(--color-text-light);
+            text-decoration: none;
+            font-size: clamp(0.9rem, 2vw, var(--font-size-xl));
+            padding: clamp(0.5rem, 1.5vw, var(--spacing-sm)) clamp(1.5rem, 4vw, 2rem);
+            border: 2px solid rgba(255, 255, 255, 0.9);
+            border-radius: 8px;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            background: rgba(212, 165, 116, 0.35);
+            backdrop-filter: blur(8px);
+            letter-spacing: 0.05em;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+            min-height: 44px;
+            width: 100%;
+            text-transform: uppercase;
+        }
+        .error-links a:hover {
+            background: rgba(212, 165, 116, 0.9);
+            color: var(--color-text-dark);
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 6px 16px rgba(212, 165, 116, 0.6),
+                        0 2px 8px rgba(0, 0, 0, 0.3);
+            border-color: rgba(255, 255, 255, 1);
+        }
+        @media (max-width: 768px) {
+            .error-hero {
+                min-height: calc(100vh - 60px);
+            }
+            .error-content {
+                min-height: calc(100vh - 60px);
+                padding-top: calc(var(--spacing-lg) + 20px);
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="page-header" role="banner">
+        <nav class="page-nav" role="navigation" data-i18n-aria-label="ariaMainNav" aria-label="Main navigation">
+            <a href="/" class="logo" data-i18n="title" data-i18n-aria-label="ariaHome" aria-label="Tiohtià:ke Strike - Home"></a>
+            <div class="lang-switcher-container">
+                <button class="lang-switcher" data-i18n-aria-label="ariaSwitchLanguage" aria-label="Switch language" aria-pressed="false"></button>
+            </div>
+        </nav>
+    </header>
+    <div class="error-hero">
+        <div class="error-hero-bg" role="img" data-i18n-aria-label="ariaArtworkImg" aria-label="In the Time of Harmony painting by Paul Signac"></div>
+        <div class="error-overlay"></div>
+        <div class="error-content">
+            <div class="error-code">404</div>
+            <h1 class="error-message" data-i18n="error404Message">Page Not Found</h1>
+            <p class="error-description" data-i18n="error404Description">
+                The page you're looking for doesn't exist or has been moved.
+            </p>
+            <nav class="error-links" role="navigation" data-i18n-aria-label="ariaPageNav" aria-label="Page navigation">
+                <a href="/" data-i18n="error404Home">Go to Homepage</a>
+                <a href="/about.html" data-i18n="about"></a>
+                <a href="/petition.html" data-i18n="petition"></a>
+                <a href="/resources.html" data-i18n="resources"></a>
+                <a href="/contact.html" data-i18n="contact"></a>
+            </nav>
+        </div>
+    </div>
+    <script src="/scripts/common.js" defer></script>
+    <script src="/scripts/lang-switcher.js" defer></script>
+</body>
+</html>
+
