@@ -10,11 +10,10 @@
     <link rel="stylesheet" href="/styles/site.css">
 </head>
 <body>
-    <!-- LANDING PAGE -->
-    <div id="landing" class="page active">
+    <div id="landing">
         <header class="page-header" role="banner">
             <nav class="page-nav" role="navigation" data-i18n-aria-label="ariaMainNav" aria-label="Main navigation">
-                <a href="#" onclick="showPage('landing'); return false;" class="logo logo-no-pointer" data-i18n="title" data-i18n-aria-label="ariaHome" aria-label="Tiohtià:ke Strike - Home"></a>
+                <a href="/" class="logo logo-no-pointer" data-i18n="title" data-i18n-aria-label="ariaHome" aria-label="Tiohtià:ke Strike - Home"></a>
                 <div class="lang-switcher-container">
                     <button class="lang-switcher" data-i18n-aria-label="ariaSwitchLanguage" aria-label="Switch language" aria-pressed="false"></button>
                 </div>
@@ -28,13 +27,10 @@
                 <h1 data-i18n="title"></h1>
                 <p class="subtitle" data-i18n="subtitle"></p>
                 <nav class="nav-links" role="navigation" data-i18n-aria-label="ariaPageNav" aria-label="Page navigation">
-                    <a href="#" onclick="showPage('about'); return false;" data-i18n="about" data-i18n-aria-label="ariaGoToAbout" aria-label="Go to About page"></a>
-                    <a href="#" onclick="showPage('petition'); return false;" data-i18n="petition" data-i18n-aria-label="ariaGoToPetition" aria-label="Go to Petition page"></a>
-                    <a href="#" onclick="showPage('signal'); return false;" data-i18n="signal" data-i18n-aria-label="ariaGoToSignal" aria-label="Go to Signal page"></a>
-                    <a href="#" onclick="showPage('resources'); return false;" data-i18n="resources" data-i18n-aria-label="ariaGoToResources" aria-label="Go to Resources page"></a>
+                    <a href="/petition.html" data-i18n="signPetitionButton" data-i18n-aria-label="ariaGoToPetition" aria-label="Go to Petition page"></a>
                 </nav>
                 </div>
-            <button class="artwork-info-btn" onclick="toggleArtworkInfo()" data-i18n-aria-label="ariaArtworkInfo" aria-label="Information about the artwork">ℹ</button>
+            <button class="artwork-info-btn" onclick="window.toggleArtworkInfo && window.toggleArtworkInfo(); return false;" data-i18n-aria-label="ariaArtworkInfo" aria-label="Information about the artwork">ℹ</button>
             <div class="artwork-info-panel" id="artworkInfo" role="dialog" aria-labelledby="artworkTitle" aria-modal="true" aria-hidden="true">
                 <button class="close-btn" onclick="toggleArtworkInfo()" data-i18n-aria-label="ariaCloseArtwork" aria-label="Close artwork information panel">×</button>
                 <h3 id="artworkTitle" data-i18n="artworkTitle"></h3>
@@ -48,257 +44,16 @@
         </div>
     </div>
 
-    <!-- ABOUT PAGE -->
-    <div id="about" class="page">
-        <header class="page-header" role="banner">
-            <nav class="page-nav" role="navigation" data-i18n-aria-label="ariaMainNav" aria-label="Main navigation">
-                <a href="#" onclick="showPage('landing'); return false;" class="logo" data-i18n="title" data-i18n-aria-label="ariaHome" aria-label="Tiohtià:ke Strike - Home"></a>
-                <div class="page-nav-links">
-                    <a href="#" onclick="showPage('about'); return false;" data-i18n="about" data-i18n-aria-label="ariaGoToAbout" aria-label="Go to About page"></a>
-                    <a href="#" onclick="showPage('petition'); return false;" data-i18n="petition" data-i18n-aria-label="ariaGoToPetition" aria-label="Go to Petition page"></a>
-                    <a href="#" onclick="showPage('signal'); return false;" data-i18n="signal" data-i18n-aria-label="ariaGoToSignal" aria-label="Go to Signal page"></a>
-                    <a href="#" onclick="showPage('resources'); return false;" data-i18n="resources" data-i18n-aria-label="ariaGoToResources" aria-label="Go to Resources page"></a>
-                </div>
-                <div class="lang-switcher-container">
-                    <button class="lang-switcher" data-i18n-aria-label="ariaSwitchLanguage" aria-label="Switch language" aria-pressed="false"></button>
-            </div>
-            </nav>
-        </header>
-
-        <main class="content-section" role="main">
-            <h2 data-i18n="whoAreWe"></h2>
-            <p data-i18n="whoAreWePara1"></p>
-            <p data-i18n="whoAreWePara2"></p>
-
-            <div class="divider"></div>
-
-            <h2 data-i18n="whyRentStrike"></h2>
-            <p data-i18n="whyRentStrikePara1"></p>
-            <p data-i18n="whyRentStrikePara2"></p>
-            <ul>
-                <li data-i18n="whyRentStrikeList1"></li>
-                <li data-i18n="whyRentStrikeList2"></li>
-                <li data-i18n="whyRentStrikeList3"></li>
-                <li data-i18n="whyRentStrikeList4"></li>
-                <li data-i18n="whyRentStrikeList5"></li>
-            </ul>
-            <p data-i18n="whyRentStrikePara3"></p>
-
-            <div class="divider"></div>
-
-            <h2 data-i18n="whyCoops"></h2>
-            <p data-i18n="whyCoopsPara1"></p>
-            <p data-i18n="whyCoopsPara2"></p>
-            <ul>
-                <li data-i18n="whyCoopsList1"></li>
-                <li data-i18n="whyCoopsList2"></li>
-                <li data-i18n="whyCoopsList3"></li>
-                <li data-i18n="whyCoopsList4"></li>
-            </ul>
-            <p data-i18n="whyCoopsPara3"></p>
-        </main>
-    </div>
-
-    <!-- RESOURCES PAGE -->
-    <div id="resources" class="page">
-        <header class="page-header" role="banner">
-            <nav class="page-nav" role="navigation" data-i18n-aria-label="ariaMainNav" aria-label="Main navigation">
-                <a href="#" onclick="showPage('landing'); return false;" class="logo" data-i18n="title" data-i18n-aria-label="ariaHome" aria-label="Tiohtià:ke Strike - Home"></a>
-                <div class="page-nav-links">
-                    <a href="#" onclick="showPage('about'); return false;" data-i18n="about" data-i18n-aria-label="ariaGoToAbout" aria-label="Go to About page"></a>
-                    <a href="#" onclick="showPage('petition'); return false;" data-i18n="petition" data-i18n-aria-label="ariaGoToPetition" aria-label="Go to Petition page"></a>
-                    <a href="#" onclick="showPage('signal'); return false;" data-i18n="signal" data-i18n-aria-label="ariaGoToSignal" aria-label="Go to Signal page"></a>
-                    <a href="#" onclick="showPage('resources'); return false;" data-i18n="resources" data-i18n-aria-label="ariaGoToResources" aria-label="Go to Resources page"></a>
-                </div>
-                <div class="lang-switcher-container">
-                    <button class="lang-switcher" data-i18n-aria-label="ariaSwitchLanguage" aria-label="Switch language" aria-pressed="false"></button>
-            </div>
-            </nav>
-        </header>
-
-        <main class="content-section" role="main">
-            <h2 data-i18n="resourcesTitle"></h2>
-            <p data-i18n="resourcesPara"></p>
-
-            <div class="resource-grid">
-                <div class="resource-card">
-                    <h3 data-i18n="pamphlet"></h3>
-                    <p data-i18n="pamphletDesc"></p>
-                    <a href="/resources/TIOHTIAKE STRIKE.pdf" target="_blank" class="resource-link" data-i18n-aria-label="ariaDownloadPamphlet" aria-label="Download the Tiohtià:ke Strike pamphlet (PDF)">
-                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                            <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/>
-                        </svg>
-                        <span data-i18n="getPamphlet"></span>
-                    </a>
-                </div>
-                <div class="resource-card">
-                    <h3 data-i18n="mailingListTitle"></h3>
-                    <p data-i18n="mailingListDesc"></p>
-                    <a href="mailto:tiohtiakestrike-subscribe@lists.riseup.net" class="resource-link" data-i18n-aria-label="ariaSubscribeMailingList" aria-label="Subscribe to mailing list by sending email to tiohtiakestrike-subscribe@lists.riseup.net">
-                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                            <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
-                        </svg>
-                        <span data-i18n="joinMailingList"></span>
-                    </a>
-                    <p class="mailing-list-instructions" data-i18n="mailingListInstructions"></p>
-                </div>
-            </div>
-
-            <p class="more-resources" data-i18n="moreResourcesComing" style="text-align: center; margin-top: 2rem; font-style: italic; color: var(--color-text-muted);"></p>
-
-            <div class="contact-section">
-                <h2 data-i18n="contactTitle"></h2>
-                <div class="contact-grid">
-                    <a href="mailto:TIOHTIAKESTRIKE@PROTON.ME" class="contact-item" data-i18n-aria-label="ariaEmailUs" aria-label="Email us at TIOHTIAKESTRIKE@PROTON.ME">
-                        <svg class="contact-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                            <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
-                        </svg>
-                        <span class="contact-text">TIOHTIAKESTRIKE@PROTON.ME</span>
-                    </a>
-                    <a href="https://instagram.com/tiohtiake.strike" target="_blank" rel="noopener noreferrer" class="contact-item" data-i18n-aria-label="ariaFollowInstagram" aria-label="Follow us on Instagram at @TIOHTIAKE.STRIKE">
-                        <svg class="contact-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
-                        </svg>
-                        <span class="contact-text">@TIOHTIAKE.STRIKE</span>
-                    </a>
-                </div>
-            </div>
-        </main>
-    </div>
-
-    <!-- PETITION PAGE -->
-    <div id="petition" class="page">
-        <header class="page-header" role="banner">
-            <nav class="page-nav" role="navigation" aria-label="Main navigation">
-                <a href="#" onclick="showPage('landing'); return false;" class="logo" data-i18n="title" aria-label="Tiohtià:ke Strike - Home">Tiohtià:ke Strike</a>
-                <div class="page-nav-links">
-                    <a href="#" onclick="showPage('about'); return false;" data-i18n="about" aria-label="Go to About page">About</a>
-                    <a href="#" onclick="showPage('petition'); return false;" data-i18n="petition" aria-label="Go to Petition page">Petition</a>
-                    <a href="#" onclick="showPage('signal'); return false;" data-i18n="signal" aria-label="Go to Signal page">Signal</a>
-                    <a href="#" onclick="showPage('resources'); return false;" data-i18n="resources" aria-label="Go to Resources page">Resources</a>
-                </div>
-                <div class="lang-switcher-container">
-                    <button class="lang-switcher" aria-label="Switch language" aria-pressed="false">FR</button>
-                </div>
-            </nav>
-        </header>
-
-        <main class="content-section" role="main">
-            <h2 data-i18n="petitionTitle"></h2>
-            <p data-i18n="petitionPara1"></p>
-            <p>
-                <span data-i18n="petitionPara2Part1"></span> <a href="#" onclick="showPage('signal'); return false;" class="page-link" data-i18n="signal"></a> <span data-i18n="petitionPara2Part2"></span>
-            </p>
-            
-            <div class="text-center" style="margin: 3rem 0;">
-                    <a href="https://cryptpad.fr/form/#/2/form/view/X8D3gsHhnBnWw0pgldRGxipkdX0l7YOxJqQfTihOhnE/" target="_blank" rel="noopener noreferrer" class="petition-button" data-i18n-aria-label="ariaSignPetition" aria-label="Sign the petition - opens in new window">
-                        <span data-i18n="signPetitionButton"></span>
-                    </a>
-            </div>
-        </main>
-    </div>
-
-    <!-- SIGNAL PAGE -->
-    <div id="signal" class="page">
-        <header class="page-header" role="banner">
-            <nav class="page-nav" role="navigation" aria-label="Main navigation">
-                <a href="#" onclick="showPage('landing'); return false;" class="logo" data-i18n="title" aria-label="Tiohtià:ke Strike - Home">Tiohtià:ke Strike</a>
-                <div class="page-nav-links">
-                    <a href="#" onclick="showPage('about'); return false;" data-i18n="about" aria-label="Go to About page">About</a>
-                    <a href="#" onclick="showPage('petition'); return false;" data-i18n="petition" aria-label="Go to Petition page">Petition</a>
-                    <a href="#" onclick="showPage('signal'); return false;" data-i18n="signal" aria-label="Go to Signal page">Signal</a>
-                    <a href="#" onclick="showPage('resources'); return false;" data-i18n="resources" aria-label="Go to Resources page">Resources</a>
-                </div>
-                <div class="lang-switcher-container">
-                    <button class="lang-switcher" aria-label="Switch language" aria-pressed="false">FR</button>
-                </div>
-            </nav>
-        </header>
-
-        <main class="content-section" role="main">
-            <h2 data-i18n="signalGroupTitle"></h2>
-            <p data-i18n="signalGroupPara1"></p>
-            <p>
-                <strong data-i18n="signalGroupNote"></strong> <span data-i18n="signalGroupPara2Part1"></span> <a href="#" onclick="showPage('petition'); return false;" class="page-link" data-i18n="petition"></a> <span data-i18n="signalGroupPara2Part2"></span>
-            </p>
-        </div>
-    </div>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="/scripts/common.js"></script>
     <script src="/scripts/lang-switcher.js"></script>
-    <script src="/scripts/animations.js"></script>
     <script>
-        // Clear any #main-content hash on page load
-        if (window.location.hash === '#main-content') {
-            history.replaceState(null, '', window.location.pathname + window.location.search);
-        }
-        
-        // Listen for hash changes and clear #main-content if it appears
-        window.addEventListener('hashchange', function() {
-            if (window.location.hash === '#main-content') {
-                history.replaceState(null, '', window.location.pathname + window.location.search);
-            }
-        });
-        
-        // Page navigation
-        function showPage(pageId) {
-            const currentPage = document.querySelector('.page.active');
-            const targetPage = document.getElementById(pageId);
-            
-            if (!targetPage || currentPage === targetPage) return;
-            
-            // Use GSAP animation if available
-            if (window.gsapAnimations && window.gsapAnimations.animatePageTransition) {
-                window.gsapAnimations.animatePageTransition(pageId);
-            } else {
-                // Fallback to simple show/hide
-            document.querySelectorAll('.page').forEach(page => {
-                page.classList.remove('active');
-            });
-                targetPage.classList.add('active');
-            }
-            
-            window.scrollTo(0, 0);
-            
-            // Clear any hash from URL when navigating
-            if (window.location.hash) {
-                history.replaceState(null, '', window.location.pathname + window.location.search);
-            }
-            
-            // Hide artwork info when navigating away from landing page
-            if (pageId !== 'landing') {
-                const artworkInfo = document.getElementById('artworkInfo');
-                if (artworkInfo) {
-                    artworkInfo.classList.remove('active');
-                    artworkInfo.setAttribute('aria-hidden', 'true');
-                }
-            }
-            
-            // Focus management for screen readers - focus main content
-            const mainContent = targetPage ? targetPage.querySelector('main, [role="main"], .content-section') : null;
-            if (mainContent) {
-                mainContent.setAttribute('tabindex', '-1');
-                mainContent.focus();
-                // Remove tabindex after focus to avoid tab order issues
-                setTimeout(() => mainContent.removeAttribute('tabindex'), 100);
-            }
-        }
-
-        // Toggle artwork info panel
         function toggleArtworkInfo() {
             const artworkInfo = document.getElementById('artworkInfo');
             if (artworkInfo) {
                 const isActive = artworkInfo.classList.toggle('active');
                 artworkInfo.setAttribute('aria-hidden', !isActive);
                 
-                // Animate with GSAP if available
-                if (window.gsapAnimations && window.gsapAnimations.animateArtworkPanel) {
-                    window.gsapAnimations.animateArtworkPanel(isActive);
-                }
-                
                 if (isActive) {
-                    // Focus the close button when opening
                     const closeBtn = artworkInfo.querySelector('.close-btn');
                     if (closeBtn) {
                         closeBtn.focus();
@@ -306,14 +61,26 @@
                 }
             }
         }
+        
+        window.toggleArtworkInfo = toggleArtworkInfo;
+        
+        setTimeout(function() {
+            const infoBtn = document.querySelector('.artwork-info-btn');
+            if (infoBtn) {
+                infoBtn.removeAttribute('onclick');
+                infoBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    toggleArtworkInfo();
+                });
+            }
+        }, 100);
 
-        // Close artwork info panel with ESC key
         document.addEventListener('keydown', function(e) {
             if (e.key === 'Escape') {
                 const artworkInfo = document.getElementById('artworkInfo');
                 if (artworkInfo && artworkInfo.classList.contains('active')) {
                     artworkInfo.classList.remove('active');
-                    // Return focus to the info button
                     const infoBtn = document.querySelector('.artwork-info-btn');
                     if (infoBtn) {
                         infoBtn.focus();
@@ -322,32 +89,31 @@
             }
         });
 
-        // Mobile parallax scroll effect for painting
+        // Optimized parallax scroll with requestAnimationFrame
         const heroBg = document.getElementById('heroBg');
+        if (heroBg) {
+            let ticking = false;
         const isMobile = window.innerWidth <= 768;
 
+            function updateParallax() {
+                const scrollY = window.scrollY;
         if (isMobile) {
-            window.addEventListener('scroll', () => {
-                if (document.getElementById('landing').classList.contains('active')) {
-                    const scrollY = window.scrollY;
                     const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
-                    const scrollPercentage = scrollY / maxScroll;
-                    
-                    // Move background from left (0%) to right (100%) as user scrolls
+                    const scrollPercentage = maxScroll > 0 ? scrollY / maxScroll : 0;
                     const bgPosition = scrollPercentage * 100;
                     heroBg.style.backgroundPosition = `${bgPosition}% center`;
-                }
-            });
-        }
-
-        // Desktop parallax effect
-        if (!isMobile) {
-            window.addEventListener('scroll', () => {
-                if (document.getElementById('landing').classList.contains('active')) {
-                    const scrollY = window.scrollY;
+                } else {
                     heroBg.style.transform = `translateY(${scrollY * 0.5}px)`;
                 }
-            });
+                ticking = false;
+        }
+
+            window.addEventListener('scroll', () => {
+                if (!ticking) {
+                    window.requestAnimationFrame(updateParallax);
+                    ticking = true;
+                }
+            }, { passive: true });
         }
     </script>
 </body>
