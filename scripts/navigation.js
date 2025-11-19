@@ -4,7 +4,7 @@
  */
 
 import { CONFIG } from './config.js';
-import { gsapAnimations } from './animations.js';
+import { SELECTORS, EVENTS, KEYS, CSS_CLASSES, ARIA, DATA_ATTRIBUTES } from './constants.js';
 
 /**
  * Creates navigation HTML for a given page
@@ -55,72 +55,82 @@ export function createNavigation(currentPageId = 'landing', isLanding = false) {
  * @param {string} pageId - ID of the page to show
  */
 export function showPage(pageId) {
-  const currentPage = document.querySelector('.page.active');
+  const currentPage = document.querySelector(SELECTORS.activePage);
   const targetPage = document.getElementById(pageId);
   
   if (!targetPage || currentPage === targetPage) return;
   
-  // Use GSAP animation if available
-  if (window.gsapAnimations && window.gsapAnimations.animatePageTransition) {
-    window.gsapAnimations.animatePageTransition(pageId);
-  } else {
-    // Fallback to simple show/hide
-    document.querySelectorAll('.page').forEach(page => {
-      page.classList.remove('active');
-    });
-    targetPage.classList.add('active');
-  }
-  
-  window.scrollTo(0, 0);
-  
-  // Clear any hash from URL when navigating
-  if (window.location.hash) {
-    history.replaceState(null, '', window.location.pathname + window.location.search);
-  }
-  
-  // Hide artwork info when navigating away from landing page
-  if (pageId !== 'landing') {
-    const artworkInfo = document.getElementById('artworkInfo');
-    if (artworkInfo) {
-      artworkInfo.classList.remove('active');
-      artworkInfo.setAttribute('aria-hidden', 'true');
+  try {
+    // Use GSAP animation if available
+    if (window.gsapAnimations?.animatePageTransition) {
+      window.gsapAnimations.animatePageTransition(pageId);
+    } else {
+      // Fallback to simple show/hide
+      document.querySelectorAll(SELECTORS.page).forEach(page => {
+        page.classList.remove(CSS_CLASSES.active);
+      });
+      targetPage.classList.add(CSS_CLASSES.active);
     }
+    
+    window.scrollTo(0, 0);
+    
+    // Clear any hash from URL when navigating
+    if (window.location.hash) {
+      history.replaceState(null, '', window.location.pathname + window.location.search);
+    }
+    
+    // Hide artwork info when navigating away from landing page
+    if (pageId !== 'landing') {
+      const artworkInfo = document.querySelector(SELECTORS.artworkInfo);
+      if (artworkInfo) {
+        artworkInfo.classList.remove(CSS_CLASSES.active);
+        artworkInfo.setAttribute(ARIA.hidden, 'true');
+      }
+    }
+    
+    // Focus management for screen readers
+    const mainContent = targetPage?.querySelector(SELECTORS.mainContent);
+    if (mainContent) {
+      mainContent.setAttribute('tabindex', '-1');
+      mainContent.focus();
+      setTimeout(() => mainContent.removeAttribute('tabindex'), 100);
+    }
+    
+    // Dispatch event for animations to refresh
+    window.dispatchEvent(new CustomEvent(EVENTS.pageChanged, { detail: { pageId } }));
+  } catch (error) {
+    console.error('Error showing page:', error);
+    // Fallback: just show the page
+    document.querySelectorAll(SELECTORS.page).forEach(page => {
+      page.classList.remove(CSS_CLASSES.active);
+    });
+    targetPage.classList.add(CSS_CLASSES.active);
   }
-  
-  // Focus management for screen readers - focus main content
-  const mainContent = targetPage ? targetPage.querySelector('main, [role="main"], .content-section') : null;
-  if (mainContent) {
-    mainContent.setAttribute('tabindex', '-1');
-    mainContent.focus();
-    // Remove tabindex after focus to avoid tab order issues
-    setTimeout(() => mainContent.removeAttribute('tabindex'), 100);
-  }
-  
-  // Dispatch event for animations to refresh
-  window.dispatchEvent(new CustomEvent('pageChanged', { detail: { pageId } }));
 }
 
 /**
  * Toggles the artwork info panel
  */
 export function toggleArtworkInfo() {
-  const artworkInfo = document.getElementById('artworkInfo');
-  if (artworkInfo) {
-    const isActive = artworkInfo.classList.toggle('active');
-    artworkInfo.setAttribute('aria-hidden', !isActive);
+  const artworkInfo = document.querySelector(SELECTORS.artworkInfo);
+  if (!artworkInfo) return;
+  
+  try {
+    const isActive = artworkInfo.classList.toggle(CSS_CLASSES.active);
+    artworkInfo.setAttribute(ARIA.hidden, !isActive);
     
     // Animate with GSAP if available
-    if (window.gsapAnimations && window.gsapAnimations.animateArtworkPanel) {
+    if (window.gsapAnimations?.animateArtworkPanel) {
       window.gsapAnimations.animateArtworkPanel(isActive);
     }
     
     if (isActive) {
       // Focus the close button when opening
-      const closeBtn = artworkInfo.querySelector('.close-btn');
-      if (closeBtn) {
-        closeBtn.focus();
-      }
+      const closeBtn = artworkInfo.querySelector(SELECTORS.artworkCloseBtn);
+      closeBtn?.focus();
     }
+  } catch (error) {
+    console.error('Error toggling artwork info:', error);
   }
 }
 
@@ -129,14 +139,13 @@ export function toggleArtworkInfo() {
  */
 export function setupNavigation() {
   // Handle page navigation clicks
-  document.addEventListener('click', (e) => {
-    // Check if clicked element or its parent has data-page attribute
-    const pageLink = e.target.closest('[data-page]');
+  document.addEventListener(EVENTS.click, (e) => {
+    const pageLink = e.target.closest(SELECTORS.pageLink);
     
     if (pageLink) {
       e.preventDefault();
       e.stopPropagation();
-      const pageId = pageLink.getAttribute('data-page');
+      const pageId = pageLink.getAttribute(DATA_ATTRIBUTES.page);
       if (pageId) {
         showPage(pageId);
       }
@@ -144,29 +153,26 @@ export function setupNavigation() {
   });
 
   // Handle artwork info toggle
-  document.addEventListener('click', (e) => {
-    if (e.target.matches('.artwork-info-btn') || e.target.closest('.artwork-info-btn')) {
+  document.addEventListener(EVENTS.click, (e) => {
+    if (e.target.matches(SELECTORS.artworkInfoBtn) || e.target.closest(SELECTORS.artworkInfoBtn)) {
       e.preventDefault();
       toggleArtworkInfo();
     }
-    if (e.target.matches('.close-btn') || e.target.closest('.close-btn')) {
+    if (e.target.matches(SELECTORS.artworkCloseBtn) || e.target.closest(SELECTORS.artworkCloseBtn)) {
       e.preventDefault();
       toggleArtworkInfo();
     }
   });
 
   // Close artwork info panel with ESC key
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') {
-      const artworkInfo = document.getElementById('artworkInfo');
-      if (artworkInfo && artworkInfo.classList.contains('active')) {
-        artworkInfo.classList.remove('active');
-        artworkInfo.setAttribute('aria-hidden', 'true');
+  document.addEventListener(EVENTS.keydown, (e) => {
+    if (e.key === KEYS.escape) {
+      const artworkInfo = document.querySelector(SELECTORS.artworkInfo);
+      if (artworkInfo?.classList.contains(CSS_CLASSES.active)) {
+        artworkInfo.classList.remove(CSS_CLASSES.active);
+        artworkInfo.setAttribute(ARIA.hidden, 'true');
         // Return focus to the info button
-        const infoBtn = document.querySelector('.artwork-info-btn');
-        if (infoBtn) {
-          infoBtn.focus();
-        }
+        document.querySelector(SELECTORS.artworkInfoBtn)?.focus();
       }
     }
   });
