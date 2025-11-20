@@ -18,6 +18,13 @@ function toggleMobileMenu() {
         }
         
         document.body.style.overflow = isActive ? 'hidden' : '';
+        
+        // Add/remove class to body when menu is active (for hiding elements like artwork info button)
+        if (isActive) {
+            document.body.classList.add('mobile-menu-open');
+        } else {
+            document.body.classList.remove('mobile-menu-open');
+        }
     }
 }
 
@@ -35,6 +42,7 @@ function closeMobileMenu() {
         }
         
         document.body.style.overflow = '';
+        document.body.classList.remove('mobile-menu-open');
     }
 }
 

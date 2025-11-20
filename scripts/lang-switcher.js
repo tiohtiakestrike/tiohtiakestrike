@@ -20,13 +20,8 @@ async function loadLangStrings(lang) {
       throw new Error(`Failed to load ${lang}.json: ${res.status}`);
     }
     langStrings = await res.json();
-    console.log(`Loaded ${Object.keys(langStrings).length} translations for ${lang}`);
   } catch (e) {
-    if (e.name === 'AbortError') {
-      console.warn(`Timeout loading language ${lang}.json - using fallback`);
-    } else {
-      console.error(`Error loading language ${lang}:`, e);
-    }
+    // Ignore errors and use fallback
     // Fallback: try to load from cache or use empty object
     langStrings = {};
     // Make sure content is still visible even if translations fail
@@ -41,13 +36,7 @@ async function loadLangStrings(lang) {
 async function updateTexts() {
   // Ensure language strings are loaded before updating
   if (!langStrings || Object.keys(langStrings).length === 0 || !langStrings.switchButton) {
-    console.log(`Loading language strings for: ${html.lang}`);
     await loadLangStrings(html.lang);
-  }
-  
-  // Verify we have the right language loaded
-  if (langStrings && Object.keys(langStrings).length > 0) {
-    console.log(`Updating page with ${html.lang} - First key check: petitionTitle = "${langStrings.petitionTitle}"`);
   }
   
   // Update document title
@@ -60,7 +49,6 @@ async function updateTexts() {
   });
   // Update all elements with data-i18n
   const i18nElements = document.querySelectorAll('[data-i18n]');
-  console.log(`Found ${i18nElements.length} elements to translate for language: ${html.lang}`);
   
   i18nElements.forEach(el => {
     const key = el.getAttribute('data-i18n');
@@ -87,16 +75,7 @@ async function updateTexts() {
       } else {
         el.textContent = value;
       }
-      
-      // Log petition paragraph updates for debugging
-      if (key.includes('petitionPara2')) {
-        console.log(`Updated ${key}: "${value.substring(0, 50)}..."`);
-      }
     } else if (value === undefined || value === null || value === '') {
-      // Log missing translations for debugging (only in development)
-      if (typeof console !== 'undefined' && console.warn) {
-        console.warn(`Missing translation for key: ${key} in language: ${html.lang}`);
-      }
       // Ensure element is still visible even without content
       el.style.visibility = 'visible';
       el.style.display = '';
@@ -199,15 +178,9 @@ async function switchLanguage(event) {
 }
 
 (async () => {
-  console.log('Language switcher initializing...');
-  
   // Get the language to use (priority: URL > localStorage > HTML lang > default)
   const targetLang = getCurrentLang();
   const urlLang = getLangFromURL();
-  
-  console.log('Target language:', targetLang);
-  console.log('URL lang:', urlLang);
-  console.log('HTML lang attribute:', html.lang);
   
   // If no lang in URL but we have one in localStorage, redirect to add it
   if (!urlLang) {
@@ -227,7 +200,6 @@ async function switchLanguage(event) {
   
   // Update HTML lang attribute and class if needed
   if (targetLang !== html.lang) {
-    console.log(`Updating HTML lang from ${html.lang} to ${targetLang}`);
     html.lang = targetLang;
     html.className = `lang-${targetLang}`;
   }
@@ -241,7 +213,6 @@ async function switchLanguage(event) {
     }
   }
   
-  console.log(`Final language to load: ${html.lang}`);
   // Ensure language strings are loaded before updating
   await loadLangStrings(html.lang);
   
