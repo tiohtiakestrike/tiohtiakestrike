@@ -32,9 +32,9 @@
     --spacing-lg: 2rem;
     --spacing-xl: 4rem;
     
-    /* Font fallbacks: System fonts first, then Google Fonts as enhancement */
-    --font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif, 'Inter', sans-serif;
-    --font-family-display: Georgia, 'Times New Roman', serif, 'Playfair Display', serif;
+    /* System fonts only - no external dependencies */
+    --font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    --font-family-display: Georgia, 'Times New Roman', serif;
     --font-size-base: 1rem;
     --font-size-lg: 1.125rem;
     --font-size-xl: 1.25rem;
